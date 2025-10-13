@@ -20,7 +20,7 @@ grenbo="\e[92;1m"
 COLOR1="${grenbo}"
 REPO="https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/"
 start=$(date +%s)
-TOTAL_STEPS=25
+TOTAL_STEPS=24
 CURRENT_STEP=0
 
 print_install() {
@@ -83,21 +83,24 @@ function show_intro_banner() {
             export IP=$current_ip
         fi
     fi
-    echo -e "${YELLOW}capzsmodzs Premium Installer${NC}"
-    echo -e "${GRAY}------------------------------------------------------------${NC}"
-    printf "  %-15s : %s%s%s\n" "Developer" "${green}" "capzsmodzs" "${NC}"
-    printf "  %-15s : %s%s%s\n" "Edition" "${WHITE}" "Premium" "${NC}"
-    printf "  %-15s : %s%s%s\n" "Maintainer" "${WHITE}" "capzsmodzs" "${NC}"
-    echo -e "${GRAY}------------------------------------------------------------${NC}"
-    printf "  %-15s : %s%s%s\n" "Architecture" "${green}" "$(uname -m)" "${NC}"
-    printf "  %-15s : %s%s%s\n" "Operating System" "${green}" "$(awk -F= '/^PRETTY_NAME/{gsub(/\"/,\"\",$2);print $2}' /etc/os-release)" "${NC}"
+    local os_name
+    os_name=$(awk -F= '/^PRETTY_NAME=/{gsub(/"/,"",$2);print $2}' /etc/os-release)
+    printf "%b\n" "${YELLOW}capzsmodzs Premium Installer${NC}"
+    printf "%b\n" "${GRAY}------------------------------------------------------------${NC}"
+    printf "  %-15s : %b%s%b\n" "Developer" "${green}" "capzsmodzs" "${NC}"
+    printf "  %-15s : %b%s%b\n" "Edition" "${WHITE}" "Premium" "${NC}"
+    printf "  %-15s : %b%s%b\n" "Maintainer" "${WHITE}" "capzsmodzs" "${NC}"
+    printf "%b\n" "${GRAY}------------------------------------------------------------${NC}"
+    printf "  %-15s : %b%s%b\n" "Architecture" "${green}" "$(uname -m)" "${NC}"
+    printf "  %-15s : %b%s%b\n" "Operating System" "${green}" "$os_name" "${NC}"
     if [[ -n $current_ip ]]; then
-        printf "  %-15s : %s%s%s\n" "Public IP" "${green}" "$current_ip" "${NC}"
+        printf "  %-15s : %b%s%b\n" "Public IP" "${green}" "$current_ip" "${NC}"
     else
-        printf "  %-15s : %s%s%s\n" "Public IP" "${RED}" "Unknown" "${NC}"
+        printf "  %-15s : %b%s%b\n" "Public IP" "${RED}" "Unknown" "${NC}"
     fi
     echo
-    read -p "$(printf 'Press %sEnter%s to start installation: ' "${green}" "${NC}")"
+    printf "Press %bEnter%b to start installation: " "${green}" "${NC}"
+    read -r
     echo
 }
 function validate_system() {
