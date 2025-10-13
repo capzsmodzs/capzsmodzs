@@ -53,6 +53,13 @@ export DEBIAN_FRONTEND="${DEBIAN_FRONTEND:-noninteractive}"
 
 function show_intro_banner() {
     clear
+    local current_ip=${IP:-}
+    if [[ -z $current_ip ]]; then
+        current_ip=$(curl -s https://ipinfo.io/ip 2>/dev/null || true)
+        if [[ -n $current_ip ]]; then
+            export IP=$current_ip
+        fi
+    fi
     echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo -e "${BLUE}Developer  »  capzsmodzs${NC} ${CYAN}(${NC}${WHITE} Premium Edition ${CYAN})${NC}"
     echo -e "${GREEN}» Setting up your VPN server quickly and easily${NC}"
@@ -62,7 +69,11 @@ function show_intro_banner() {
     echo ""
     echo -e "${OK} Your Architecture Is Supported ( ${green}$(uname -m)${NC} )"
     echo -e "${OK} Your OS Is Supported ( ${green}$(awk -F= '/^PRETTY_NAME/{gsub(/"/,"",$2);print $2}' /etc/os-release)${NC} )"
-    echo -e "${OK} IP Address ( ${green}${IP:-Unknown}${NC} )"
+    if [[ -n $current_ip ]]; then
+        echo -e "${OK} IP Address ( ${green}${current_ip}${NC} )"
+    else
+        echo -e "${OK} IP Address ( ${RED}Unknown${NC} )"
+    fi
     echo ""
     read -p "$(echo -e "Press ${GRAY}[ ${NC}${green}Enter${NC} ${GRAY}]${NC} For Starting Installation") "
     echo ""
