@@ -48,7 +48,7 @@ secs_to_human() {
 get_public_ip() {
     if ! command -v curl >/dev/null 2>&1; then
         return 1
-    }
+    fi
     local endpoints=(
         "https://ipinfo.io/ip"
         "https://ipv4.icanhazip.com"
