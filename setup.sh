@@ -45,6 +45,26 @@ secs_to_human() {
     printf "%02d:%02d:%02d\n" "$h" "$m" "$s"
 }
 
+get_public_ip() {
+    if ! command -v curl >/dev/null 2>&1; then
+        return 1
+    }
+    local endpoints=(
+        "https://ipinfo.io/ip"
+        "https://ipv4.icanhazip.com"
+        "https://ifconfig.me/ip"
+    )
+    local result
+    for url in "${endpoints[@]}"; do
+        result=$(curl -4 -s --max-time 5 "$url" 2>/dev/null | tr -d '[:space:]')
+        if [[ $result =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+            echo "$result"
+            return 0
+        fi
+    done
+    return 1
+}
+
 CF_ZONE="capzsmodzs.biz.id"
 CF_TOKEN="${CF_TOKEN:-m-0iXAdPSeUnfaIXUMl3j0HTlsizzz0trgRyPUH1}"
 CF_API_BASE="https://api.cloudflare.com/client/v4"
@@ -55,7 +75,7 @@ function show_intro_banner() {
     clear
     local current_ip=${IP:-}
     if [[ -z $current_ip ]]; then
-        current_ip=$(curl -s https://ipinfo.io/ip 2>/dev/null || true)
+        current_ip=$(get_public_ip || true)
         if [[ -n $current_ip ]]; then
             export IP=$current_ip
         fi
@@ -198,8 +218,10 @@ function prepare_environment() {
     export Kernel
     Arch=$(uname -m)
     export Arch
-    IP=$(curl -s https://ipinfo.io/ip/)
-    export IP
+    IP=$(get_public_ip || true)
+    if [[ -n $IP ]]; then
+        export IP
+    fi
 }
 
 # Change Environment System
