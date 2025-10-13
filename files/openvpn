@@ -161,7 +161,6 @@ function install_ovpn() {
     ovpn_install
     config_easy
     make_follow
-    make_follow
     cert_ovpn
     if systemctl list-unit-files | grep -qw '^openvpn.service'; then
         systemctl enable --now openvpn.service >/dev/null 2>&1

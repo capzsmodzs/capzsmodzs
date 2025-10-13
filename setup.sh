@@ -376,11 +376,13 @@ function pasang_ssl() {
     rm -rf /etc/xray/xray.key
     rm -rf /etc/xray/xray.crt
     domain=$(cat /root/domain)
-    STOPWEBSERVER=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
+    STOPWEBSERVER=$(lsof -i:80 | awk 'NR==2 {print $1}')
     rm -rf /root/.acme.sh
     mkdir /root/.acme.sh
-    systemctl stop $STOPWEBSERVER
-    systemctl stop nginx
+    if [[ -n $STOPWEBSERVER && $STOPWEBSERVER != "COMMAND" ]]; then
+        systemctl stop "$STOPWEBSERVER" >/dev/null 2>&1 || true
+    fi
+    systemctl stop nginx >/dev/null 2>&1 || true
     curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
     chmod +x /root/.acme.sh/acme.sh
     /root/.acme.sh/acme.sh --upgrade --auto-upgrade
@@ -982,7 +984,11 @@ rm -rf /root/README.md
 rm -rf /root/domain
 #sudo hostnamectl set-hostname $user
 secs_to_human "$(($(date +%s) - ${start}))"
-sudo hostnamectl set-hostname $username
+if [[ -n ${username:-} ]]; then
+    sudo hostnamectl set-hostname "$username"
+else
+    print_error "Hostname tidak diubah karena username tidak tersedia"
+fi
 echo -e "${green} Script Successfull Installed"
 echo ""
 read -p "$(echo -e "Press ${YELLOW}[ ${NC}${YELLOW}Enter${NC} ${YELLOW}]${NC} For reboot") "
