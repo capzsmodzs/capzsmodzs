@@ -20,21 +20,24 @@ grenbo="\e[92;1m"
 COLOR1="${grenbo}"
 REPO="https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/"
 start=$(date +%s)
+TOTAL_STEPS=25
+CURRENT_STEP=0
 
 print_install() {
-    echo -e "${YELLOW}[•]${NC} $1"
+    CURRENT_STEP=$((CURRENT_STEP + 1))
+    printf "%s[%02d/%02d]%s %s\n" "${YELLOW}" "${CURRENT_STEP}" "${TOTAL_STEPS}" "${NC}" "$1"
 }
 
 print_success() {
-    echo -e "${green}[✔]${NC} $1"
+    printf "    %s[OK]%s %s\n" "${green}" "${NC}" "$1"
 }
 
 print_error() {
-    echo -e "${ERROR} $1"
+    printf "    %s[ERR]%s %s\n" "${RED}" "${NC}" "$1"
 }
 
 print_ok() {
-    echo -e "${OK} $1"
+    printf "    %s[INFO]%s %s\n" "${CYAN}" "${NC}" "$1"
 }
 
 secs_to_human() {
@@ -80,23 +83,22 @@ function show_intro_banner() {
             export IP=$current_ip
         fi
     fi
-    echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo -e "${BLUE}Developer  »  capzsmodzs${NC} ${CYAN}(${NC}${WHITE} Premium Edition ${CYAN})${NC}"
-    echo -e "${GREEN}» Setting up your VPN server quickly and easily${NC}"
-    echo -e "${MAGENTA}Pembuat   : ${WHITE}capzsmodzs${NC}"
-    echo -e "${MAGENTA}Recode By ${WHITE}capzsmodzs - Custom Edition${NC}"
-    echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo ""
-    echo -e "${OK} Your Architecture Is Supported ( ${green}$(uname -m)${NC} )"
-    echo -e "${OK} Your OS Is Supported ( ${green}$(awk -F= '/^PRETTY_NAME/{gsub(/"/,"",$2);print $2}' /etc/os-release)${NC} )"
+    echo -e "${YELLOW}capzsmodzs Premium Installer${NC}"
+    echo -e "${GRAY}------------------------------------------------------------${NC}"
+    printf "  %-15s : %s%s%s\n" "Developer" "${green}" "capzsmodzs" "${NC}"
+    printf "  %-15s : %s%s%s\n" "Edition" "${WHITE}" "Premium" "${NC}"
+    printf "  %-15s : %s%s%s\n" "Maintainer" "${WHITE}" "capzsmodzs" "${NC}"
+    echo -e "${GRAY}------------------------------------------------------------${NC}"
+    printf "  %-15s : %s%s%s\n" "Architecture" "${green}" "$(uname -m)" "${NC}"
+    printf "  %-15s : %s%s%s\n" "Operating System" "${green}" "$(awk -F= '/^PRETTY_NAME/{gsub(/\"/,\"\",$2);print $2}' /etc/os-release)" "${NC}"
     if [[ -n $current_ip ]]; then
-        echo -e "${OK} IP Address ( ${green}${current_ip}${NC} )"
+        printf "  %-15s : %s%s%s\n" "Public IP" "${green}" "$current_ip" "${NC}"
     else
-        echo -e "${OK} IP Address ( ${RED}Unknown${NC} )"
+        printf "  %-15s : %s%s%s\n" "Public IP" "${RED}" "Unknown" "${NC}"
     fi
-    echo ""
-    read -p "$(echo -e "Press ${GRAY}[ ${NC}${green}Enter${NC} ${GRAY}]${NC} For Starting Installation") "
-    echo ""
+    echo
+    read -p "$(printf 'Press %sEnter%s to start installation: ' "${green}" "${NC}")"
+    echo
 }
 function validate_system() {
     local arch=$(uname -m)
@@ -260,7 +262,6 @@ function first_setup() {
 }
 
 # GEO PROJECT
-clear
 function nginx_install() {
     # // Checking System
     if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
@@ -278,7 +279,6 @@ function nginx_install() {
 
 # Update and remove packages
 function base_package() {
-    clear
     ########
     print_install "Menginstall Packet Yang Dibutuhkan"
     apt install zip pwgen openssl netcat socat cron bash-completion -y
@@ -312,11 +312,9 @@ function base_package() {
     print_success "Packet Yang Dibutuhkan"
 
 }
-clear
 # Fungsi input domain
 function pasang_domain() {
     echo -e ""
-    clear
     print_install "Menentukan domain otomatis via Cloudflare"
     local random_subdomain
     random_subdomain=$(tr -dc 'a-z0-9' </dev/urandom | head -c6)
@@ -333,10 +331,8 @@ function pasang_domain() {
     sleep 2
 }
 
-clear
 #GANTI PASSWORD DEFAULT
 function password_default() {
-    clear
     print_install "Konfigurasi Password Root"
     read -rp "Ingin mengganti password root sekarang? [y/N]: " change_root
     if [[ ${change_root,,} == "y" ]]; then
@@ -356,7 +352,6 @@ restart_system() {
     #IZIN SCRIPT
     MYIP=$(curl -sS ipv4.icanhazip.com)
     echo -e "\e[32mloading...\e[0m"
-    clear
     izinsc="https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/register"
     # USERNAME
     rm -f /usr/bin/user
@@ -376,8 +371,6 @@ restart_system() {
     today=$(date +'%Y-%m-%d')
     DATE="$today"
     valid="$exp"
-    clear
-
     ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10)
     # Status Expired Active
     Info="(${green}Active${NC})"
@@ -409,10 +402,8 @@ restart_system() {
 
     curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 }
-clear
 # Pasang SSL
 function pasang_ssl() {
-    clear
     print_install "Memasang SSL Pada Domain"
     rm -rf /etc/xray/xray.key
     rm -rf /etc/xray/xray.crt
@@ -480,7 +471,6 @@ function make_folder_xray() {
 }
 #Instal Xray
 function install_xray() {
-    clear
     print_install "Core Xray 1.8.1 Latest Version"
     domainSock_dir="/run/xray"
     ! [ -d $domainSock_dir ] && mkdir $domainSock_dir
@@ -499,7 +489,6 @@ function install_xray() {
     print_success "Core Xray 1.8.1 Latest Version"
 
     # Settings UP Nginix Server
-    clear
     curl -s ipinfo.io/city >>/etc/xray/city
     curl -s ipinfo.io/org | cut -d " " -f 2-10 >>/etc/xray/isp
     print_install "Memasang Konfigurasi Packet"
@@ -540,7 +529,6 @@ EOF
 }
 
 function configure_ssh() {
-    clear
     print_install "Memasang Password SSH"
     wget -O /etc/pam.d/common-password "${REPO}files/password"
     chmod +x /etc/pam.d/common-password
@@ -593,7 +581,6 @@ END
 }
 
 function udp_mini() {
-    clear
     print_install "Memasang Service Limit IP & Quota"
     wget -q https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/config/fv-tunnel && chmod +x fv-tunnel && ./fv-tunnel
 
@@ -620,7 +607,6 @@ function udp_mini() {
 }
 
 function ssh_slow() {
-    clear
     # // Installing UDP Mini
     print_install "Memasang modul SlowDNS Server"
     wget -q -O /tmp/nameserver "${REPO}files/nameserver" >/dev/null 2>&1
@@ -629,9 +615,7 @@ function ssh_slow() {
     print_success "SlowDNS"
 }
 
-clear
 function ins_SSHD() {
-    clear
     print_install "Memasang SSHD"
     wget -q -O /etc/ssh/sshd_config "${REPO}files/sshd" >/dev/null 2>&1
     chmod 700 /etc/ssh/sshd_config
@@ -641,9 +625,7 @@ function ins_SSHD() {
     print_success "SSHD"
 }
 
-clear
 function ins_dropbear() {
-    clear
     print_install "Menginstall Dropbear"
     if [[ ! -f /etc/kyt.txt ]]; then
         cat <<'EOF' >/etc/kyt.txt
@@ -660,9 +642,7 @@ EOF
     print_success "Dropbear"
 }
 
-clear
 function ins_vnstat() {
-    clear
     print_install "Menginstall Vnstat"
     if [[ -z ${NET:-} ]]; then
         print_error "Interface jaringan tidak ditemukan, melewati instalasi Vnstat"
@@ -689,7 +669,6 @@ function ins_vnstat() {
 }
 
 function ins_openvpn() {
-    clear
     print_install "Menginstall OpenVPN"
     #OpenVPN
     wget ${REPO}files/openvpn && chmod +x openvpn && ./openvpn
@@ -698,7 +677,6 @@ function ins_openvpn() {
 }
 
 function ins_backup() {
-    clear
     print_install "Memasang Backup Server"
     #BackupOption
     apt install rclone -y
@@ -735,9 +713,7 @@ EOF
     print_success "Backup Server"
 }
 
-clear
 function ins_swab() {
-    clear
     print_install "Memasang Swap 1 G"
     gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
     gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
@@ -762,7 +738,6 @@ function ins_swab() {
 }
 
 function ins_Fail2ban() {
-    clear
     print_install "Menginstall Fail2ban"
     apt-get install -y fail2ban >/dev/null 2>&1
 
@@ -776,7 +751,6 @@ function ins_Fail2ban() {
         mkdir /usr/local/ddos
     fi
 
-    clear
     # banner
     echo "Banner /etc/kyt.txt" >>/etc/ssh/sshd_config
     sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/kyt.txt"@g' /etc/default/dropbear
@@ -789,7 +763,6 @@ function ins_Fail2ban() {
 }
 
 function ins_epro() {
-    clear
     print_install "Menginstall ePro WebSocket Proxy"
     wget -O /usr/bin/ws "${REPO}files/ws" >/dev/null 2>&1
     wget -O /usr/bin/tun.conf "${REPO}config/tun.conf" >/dev/null 2>&1
@@ -833,7 +806,6 @@ function ins_epro() {
 }
 
 function ins_restart() {
-    clear
     print_install "Restarting  All Packet"
     /etc/init.d/nginx restart
     /etc/init.d/openvpn restart
@@ -872,7 +844,6 @@ function ins_restart() {
 
 #Instal Menu
 function menu() {
-    clear
     print_install "Memasang Menu Packet"
     wget ${REPO}menu/menu.zip
     unzip menu.zip
@@ -884,7 +855,7 @@ function menu() {
 
 # Membaut Default Menu
 function profile() {
-    clear
+    print_install "Menyiapkan profil shell dan jadwal otomatis"
     cat >/root/.profile <<EOF
 # ~/.profile: executed by Bourne-compatible login shells.
 if [ "$BASH" ]; then
@@ -966,12 +937,34 @@ EOF
     else
         TIME_DATE="AM"
     fi
-    print_success "Menu Packet"
+    print_success "Profil shell dan jadwal otomatis"
+}
+
+function show_summary() {
+    print_install "Menampilkan ringkasan instalasi"
+    local domain="-"
+    if [[ -f /etc/xray/domain ]]; then
+        domain=$(cat /etc/xray/domain)
+    fi
+    local public_ip="${IP:-$(get_public_ip || echo "-")}"
+    printf "    %-18s : %s\n" "Domain aktif" "$domain"
+    printf "    %-18s : %s\n" "IP publik" "$public_ip"
+    printf "    %-18s : %s\n" "Folder web" "/var/www/html"
+    printf "    %-18s : %s\n" "Konfigurasi Xray" "/etc/xray/config.json"
+    printf "    %-18s : %s\n" "Cert & Key" "/etc/xray/xray.crt /etc/xray/xray.key"
+    local services=(nginx xray haproxy dropbear openvpn ws)
+    printf "    %-18s :\n" "Status layanan"
+    for svc in "${services[@]}"; do
+        if systemctl is-active "$svc" >/dev/null 2>&1; then
+            printf "        - %-12s : %sRUNNING%s\n" "$svc" "${green}" "${NC}"
+        else
+            printf "        - %-12s : %sINACTIVE%s\n" "$svc" "${RED}" "${NC}"
+        fi
+    done
 }
 
 # Restart layanan after install
 function enable_services() {
-    clear
     print_install "Enable Service"
     ensure_netfilter_support
     systemctl daemon-reload
@@ -988,7 +981,6 @@ function enable_services() {
     systemctl restart cron
     systemctl restart haproxy
     print_success "Enable Service"
-    clear
 }
 
 # Fingsi Install Script
@@ -1022,6 +1014,7 @@ function instal() {
     menu
     profile
     enable_services
+    show_summary
     restart_system
 }
 instal
