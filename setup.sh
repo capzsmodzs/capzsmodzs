@@ -21,7 +21,7 @@ fi
 print_install() {
     CURRENT_STEP=$((CURRENT_STEP + 1))
     if (( USE_COLOR )); then
-        printf "%s[%02d/%02d] %s%s\n" "$GREEN" "${CURRENT_STEP}" "${TOTAL_STEPS}" "$1" "$RESET"
+        printf "%b[%02d/%02d] %s%b\n" "$GREEN" "${CURRENT_STEP}" "${TOTAL_STEPS}" "$1" "$RESET"
     else
         printf "[%02d/%02d] %s\n" "${CURRENT_STEP}" "${TOTAL_STEPS}" "$1"
     fi
@@ -29,7 +29,7 @@ print_install() {
 
 print_success() {
     if (( USE_COLOR )); then
-        printf "    %s[OK] %s%s\n" "$GREEN" "$1" "$RESET"
+        printf "    %b[OK]%b %s\n" "$GREEN" "$RESET" "$1"
     else
         printf "    [OK] %s\n" "$1"
     fi
@@ -37,7 +37,7 @@ print_success() {
 
 print_error() {
     if (( USE_COLOR )); then
-        printf "    %s[ERR] %s%s\n" "$RED" "$1" "$RESET"
+        printf "    %b[ERR]%b %s\n" "$RED" "$RESET" "$1"
     else
         printf "    [ERR] %s\n" "$1"
     fi
@@ -45,7 +45,7 @@ print_error() {
 
 print_ok() {
     if (( USE_COLOR )); then
-        printf "    %s[INFO] %s%s\n" "$GREEN" "$1" "$RESET"
+        printf "    %b[INFO]%b %s\n" "$GREEN" "$RESET" "$1"
     else
         printf "    [INFO] %s\n" "$1"
     fi
@@ -103,20 +103,20 @@ function show_intro_banner() {
     local os_name
     os_name=$(awk -F= '/^PRETTY_NAME=/{gsub(/"/,"",$2);print $2}' /etc/os-release)
     if (( USE_COLOR )); then
-        printf "%s%s%s\n" "$GREEN" "capzsmodzs Premium Installer" "$RESET"
-        printf "%s%s%s\n" "$GREEN" "------------------------------------------------------------" "$RESET"
-        printf "%sDeveloper       : capzsmodzs%s\n" "$GREEN" "$RESET"
-        printf "%sEdition         : Premium%s\n" "$GREEN" "$RESET"
-        printf "%sMaintainer      : capzsmodzs%s\n" "$GREEN" "$RESET"
-        printf "%s------------------------------------------------------------%s\n" "$GREEN" "$RESET"
-        printf "%sArchitecture    : %s%s\n" "$GREEN" "$(uname -m)" "$RESET"
-        printf "%sOperating System: %s%s\n" "$GREEN" "$os_name" "$RESET"
+        printf "%bcapzsmodzs Premium Installer%b\n" "$GREEN" "$RESET"
+        printf "%b------------------------------------------------------------%b\n" "$GREEN" "$RESET"
+        printf "%b  %-15s : capzsmodzs%b\n" "$GREEN" "$RESET" "Developer"
+        printf "%b  %-15s : Premium%b\n" "$GREEN" "$RESET" "Edition"
+        printf "%b  %-15s : capzsmodzs%b\n" "$GREEN" "$RESET" "Maintainer"
+        printf "%b------------------------------------------------------------%b\n" "$GREEN" "$RESET"
+        printf "%b  %-15s : %s%b\n" "$GREEN" "Architecture" "$(uname -m)" "$RESET"
+        printf "%b  %-15s : %s%b\n" "$GREEN" "Operating System" "$os_name" "$RESET"
         if [[ -n $current_ip ]]; then
-            printf "%sPublic IP       : %s%s\n" "$GREEN" "$current_ip" "$RESET"
+            printf "%b  %-15s : %s%b\n" "$GREEN" "Public IP" "$current_ip" "$RESET"
         else
-            printf "%sPublic IP       : %s%s\n" "$RED" "Unknown" "$RESET"
+            printf "%b  %-15s : Unknown%b\n" "$RED" "Public IP" "$RESET"
         fi
-        printf "%sPress Enter to start installation:%s " "$GREEN" "$RESET"
+        printf "%bPress Enter to start installation:%b " "$GREEN" "$RESET"
     else
         echo "capzsmodzs Premium Installer"
         echo "------------------------------------------------------------"
@@ -1007,12 +1007,12 @@ function show_summary() {
     fi
     local public_ip="${IP:-$(get_public_ip || echo "-")}"
     if (( USE_COLOR )); then
-        printf "    %s%-18s : %s%s\n" "$GREEN" "Domain aktif" "$domain" "$RESET"
-        printf "    %s%-18s : %s%s\n" "$GREEN" "IP publik" "$public_ip" "$RESET"
-        printf "    %s%-18s : %s%s\n" "$GREEN" "Folder web" "/var/www/html" "$RESET"
-        printf "    %s%-18s : %s%s\n" "$GREEN" "Konfigurasi Xray" "/etc/xray/config.json" "$RESET"
-        printf "    %s%-18s : %s%s\n" "$GREEN" "Cert & Key" "/etc/xray/xray.crt /etc/xray/xray.key" "$RESET"
-        printf "    %s%-18s :%s\n" "$GREEN" "Status layanan" "$RESET"
+        printf "    %b%-18s : %s%b\n" "$GREEN" "Domain aktif" "$domain" "$RESET"
+        printf "    %b%-18s : %s%b\n" "$GREEN" "IP publik" "$public_ip" "$RESET"
+        printf "    %b%-18s : %s%b\n" "$GREEN" "Folder web" "/var/www/html" "$RESET"
+        printf "    %b%-18s : %s%b\n" "$GREEN" "Konfigurasi Xray" "/etc/xray/config.json" "$RESET"
+        printf "    %b%-18s : %s%b\n" "$GREEN" "Cert & Key" "/etc/xray/xray.crt /etc/xray/xray.key" "$RESET"
+        printf "    %b%-18s :%b\n" "$GREEN" "Status layanan" "$RESET"
     else
         printf "    %-18s : %s\n" "Domain aktif" "$domain"
         printf "    %-18s : %s\n" "IP publik" "$public_ip"
@@ -1025,13 +1025,13 @@ function show_summary() {
     for svc in "${services[@]}"; do
         if systemctl is-active "$svc" >/dev/null 2>&1; then
             if (( USE_COLOR )); then
-                printf "        - %-12s : %sRUNNING%s\n" "$svc" "$GREEN" "$RESET"
+                printf "        - %-12s : %bRUNNING%b\n" "$svc" "$GREEN" "$RESET"
             else
                 printf "        - %-12s : RUNNING\n" "$svc"
             fi
         else
             if (( USE_COLOR )); then
-                printf "        - %-12s : %sINACTIVE%s\n" "$svc" "$RED" "$RESET"
+                printf "        - %-12s : %bINACTIVE%b\n" "$svc" "$RED" "$RESET"
             else
                 printf "        - %-12s : INACTIVE\n" "$svc"
             fi
