@@ -105,28 +105,28 @@ function show_intro_banner() {
     if (( USE_COLOR )); then
         printf "%bcapzsmodzs Premium Installer%b\n" "$GREEN" "$RESET"
         printf "%b------------------------------------------------------------%b\n" "$GREEN" "$RESET"
-        printf "%b  %-15s : %s%b\n" "$GREEN" "Developer" "capzsmodzs" "$RESET"
-        printf "%b  %-15s : %s%b\n" "$GREEN" "Edition" "Premium" "$RESET"
-        printf "%b  %-15s : %s%b\n" "$GREEN" "Maintainer" "capzsmodzs" "$RESET"
+        printf "%b  %-16s : %s%b\n" "$GREEN" "Developer" "capzsmodzs" "$RESET"
+        printf "%b  %-16s : %s%b\n" "$GREEN" "Edition" "Premium" "$RESET"
+        printf "%b  %-16s : %s%b\n" "$GREEN" "Maintainer" "capzsmodzs" "$RESET"
         printf "%b------------------------------------------------------------%b\n" "$GREEN" "$RESET"
-        printf "%b  %-15s : %s%b\n" "$GREEN" "Architecture" "$(uname -m)" "$RESET"
-        printf "%b  %-15s : %s%b\n" "$GREEN" "Operating System" "$os_name" "$RESET"
+        printf "%b  %-16s : %s%b\n" "$GREEN" "Architecture" "$(uname -m)" "$RESET"
+        printf "%b  %-16s : %s%b\n" "$GREEN" "Operating System" "$os_name" "$RESET"
         if [[ -n $current_ip ]]; then
-            printf "%b  %-15s : %s%b\n" "$GREEN" "Public IP" "$current_ip" "$RESET"
+            printf "%b  %-16s : %s%b\n" "$GREEN" "Public IP" "$current_ip" "$RESET"
         else
-            printf "%b  %-15s : Unknown%b\n" "$RED" "Public IP" "$RESET"
+            printf "%b  %-16s : Unknown%b\n" "$RED" "Public IP" "$RESET"
         fi
         printf "%bPress Enter to start installation:%b " "$GREEN" "$RESET"
     else
         echo "capzsmodzs Premium Installer"
         echo "------------------------------------------------------------"
-        printf "  %-15s : %s\n" "Developer" "capzsmodzs"
-        printf "  %-15s : %s\n" "Edition" "Premium"
-        printf "  %-15s : %s\n" "Maintainer" "capzsmodzs"
+        printf "  %-16s : %s\n" "Developer" "capzsmodzs"
+        printf "  %-16s : %s\n" "Edition" "Premium"
+        printf "  %-16s : %s\n" "Maintainer" "capzsmodzs"
         echo "------------------------------------------------------------"
-        printf "  %-15s : %s\n" "Architecture" "$(uname -m)"
-        printf "  %-15s : %s\n" "Operating System" "$os_name"
-        printf "  %-15s : %s\n" "Public IP" "${current_ip:-Unknown}"
+        printf "  %-16s : %s\n" "Architecture" "$(uname -m)"
+        printf "  %-16s : %s\n" "Operating System" "$os_name"
+        printf "  %-16s : %s\n" "Public IP" "${current_ip:-Unknown}"
         printf "Press Enter to start installation: "
     fi
     read -r
