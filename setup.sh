@@ -673,7 +673,7 @@ function ins_dropbear() {
     print_install "Menginstall Dropbear"
     if [[ ! -f /etc/kyt.txt ]]; then
         cat <<'EOF' >/etc/kyt.txt
-Fighter Tunnel Service
+capzsmodzs Autoscript Service
 EOF
         chmod 644 /etc/kyt.txt
     fi
