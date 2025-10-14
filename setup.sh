@@ -25,19 +25,19 @@ CURRENT_STEP=0
 
 print_install() {
     CURRENT_STEP=$((CURRENT_STEP + 1))
-    printf "%s[%02d/%02d]%s %s\n" "${YELLOW}" "${CURRENT_STEP}" "${TOTAL_STEPS}" "${NC}" "$1"
+    printf "%b[%02d/%02d]%b %s\n" "${YELLOW}" "${CURRENT_STEP}" "${TOTAL_STEPS}" "${NC}" "$1"
 }
 
 print_success() {
-    printf "    %s[OK]%s %s\n" "${green}" "${NC}" "$1"
+    printf "    %b[OK]%b %s\n" "${green}" "${NC}" "$1"
 }
 
 print_error() {
-    printf "    %s[ERR]%s %s\n" "${RED}" "${NC}" "$1"
+    printf "    %b[ERR]%b %s\n" "${RED}" "${NC}" "$1"
 }
 
 print_ok() {
-    printf "    %s[INFO]%s %s\n" "${CYAN}" "${NC}" "$1"
+    printf "    %b[INFO]%b %s\n" "${CYAN}" "${NC}" "$1"
 }
 
 secs_to_human() {
@@ -640,6 +640,12 @@ EOF
     apt-get install dropbear -y >/dev/null 2>&1
     wget -q -O /etc/default/dropbear "${REPO}config/dropbear.conf"
     chmod +x /etc/default/dropbear
+    if [[ ! -f /etc/dropbear/dropbear_dss_host_key ]]; then
+        mkdir -p /etc/dropbear
+        if command -v dropbearkey >/dev/null 2>&1; then
+            dropbearkey -t dss -f /etc/dropbear/dropbear_dss_host_key >/dev/null 2>&1 || true
+        fi
+    fi
     /etc/init.d/dropbear restart
     /etc/init.d/dropbear status
     print_success "Dropbear"
@@ -660,7 +666,9 @@ function ins_vnstat() {
     cd vnstat-2.6
     ./configure --prefix=/usr --sysconfdir=/etc && make && make install
     cd
-    vnstat -u -i $NET
+    if ! vnstat --create -i "$NET" >/dev/null 2>&1; then
+        vnstat --add -i "$NET" >/dev/null 2>&1 || true
+    fi
     sed -i 's/Interface "'""eth0""'"/Interface "'""$NET""'"/g' /etc/vnstat.conf
     chown vnstat:vnstat /var/lib/vnstat -R
     systemctl enable vnstat
@@ -685,7 +693,16 @@ function ins_backup() {
     apt install rclone -y
     printf "q\n" | rclone config
     mkdir -p /root/.config/rclone
-    wget -O /root/.config/rclone/rclone.conf "${REPO}config/rclone.conf"
+    if ! wget -q -O /root/.config/rclone/rclone.conf "${REPO}config/rclone.conf"; then
+        cat <<'EOF' >/root/.config/rclone/rclone.conf
+[dr]
+type = drive
+scope = drive
+# Isikan token secara lokal via variabel lingkungan atau file yang tidak dilacak Git.
+token = {"access_token":"REPLACE_ME","token_type":"Bearer","refresh_token":"REPLACE_ME","expiry":"YYYY-MM-DDTHH:MM:SSZ"}
+EOF
+        print_ok "Konfigurasi rclone default dibuat secara lokal"
+    fi
     #Install Wondershaper
     cd /bin
     git clone https://github.com/magnific0/wondershaper.git
