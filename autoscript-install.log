@@ -1,1447 +1,0 @@
-[H[2J[3J[H[2J[3Jcapzsmodzs Premium Installer
-------------------------------------------------------------
-  Developer       : capzsmodzs
-  Edition         : Premium
-  Maintainer      : capzsmodzs
-------------------------------------------------------------
-  Architecture    : x86_64
-  Operating System : Ubuntu 22.04.5 LTS
-  Public IP       : 209.97.168.176
-
-Press Enter to start installation: 
-    [INFO] Root user Start installation process
-[01/24] Membuat direktori xray
-    [OK] Directory Xray
-Setup Dependencies Ubuntu 22.04.5 LTS
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Hit:1 http://security.ubuntu.com/ubuntu jammy-security InRelease
-Hit:2 http://archive.ubuntu.com/ubuntu jammy InRelease
-Hit:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
-Hit:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
-Reading package lists...
-Building dependency tree...
-Reading state information...
-8 packages can be upgraded. Run 'apt list --upgradable' to see them.
-Reading package lists...
-Building dependency tree...
-Reading state information...
-software-properties-common is already the newest version (0.99.22.9).
-software-properties-common set to manually installed.
-0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.
-Reading package lists...
-Building dependency tree...
-Reading state information...
-haproxy is already the newest version (2.4.24-0ubuntu0.22.04.3).
-0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.
-[02/24] Setup nginx For OS Is Ubuntu 22.04.5 LTS
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following additional packages will be installed:
-  libnginx-mod-http-geoip2 libnginx-mod-http-image-filter
-  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream
-  libnginx-mod-stream-geoip2 nginx-common nginx-core
-Suggested packages:
-  fcgiwrap nginx-doc ssl-cert
-The following NEW packages will be installed:
-  libnginx-mod-http-geoip2 libnginx-mod-http-image-filter
-  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream
-  libnginx-mod-stream-geoip2 nginx nginx-common nginx-core
-0 upgraded, 9 newly installed, 0 to remove and 8 not upgraded.
-Need to get 698 kB of archives.
-After this operation, 2391 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 nginx-common all 1.18.0-6ubuntu14.7 [40.1 kB]
-Get:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-http-geoip2 amd64 1.18.0-6ubuntu14.7 [12.0 kB]
-Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-http-image-filter amd64 1.18.0-6ubuntu14.7 [15.5 kB]
-Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-http-xslt-filter amd64 1.18.0-6ubuntu14.7 [13.8 kB]
-Get:5 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-mail amd64 1.18.0-6ubuntu14.7 [45.8 kB]
-Get:6 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-stream amd64 1.18.0-6ubuntu14.7 [73.0 kB]
-Get:7 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-stream-geoip2 amd64 1.18.0-6ubuntu14.7 [10.1 kB]
-Get:8 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 nginx-core amd64 1.18.0-6ubuntu14.7 [483 kB]
-Get:9 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 nginx amd64 1.18.0-6ubuntu14.7 [3878 B]
-Preconfiguring packages ...
-Fetched 698 kB in 2s (455 kB/s)
-Selecting previously unselected package nginx-common.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 41383 files and directories currently installed.)
-Preparing to unpack .../0-nginx-common_1.18.0-6ubuntu14.7_all.deb ...
-Unpacking nginx-common (1.18.0-6ubuntu14.7) ...
-Selecting previously unselected package libnginx-mod-http-geoip2.
-Preparing to unpack .../1-libnginx-mod-http-geoip2_1.18.0-6ubuntu14.7_amd64.deb ...
-Unpacking libnginx-mod-http-geoip2 (1.18.0-6ubuntu14.7) ...
-Selecting previously unselected package libnginx-mod-http-image-filter.
-Preparing to unpack .../2-libnginx-mod-http-image-filter_1.18.0-6ubuntu14.7_amd64.deb ...
-Unpacking libnginx-mod-http-image-filter (1.18.0-6ubuntu14.7) ...
-Selecting previously unselected package libnginx-mod-http-xslt-filter.
-Preparing to unpack .../3-libnginx-mod-http-xslt-filter_1.18.0-6ubuntu14.7_amd64.deb ...
-Unpacking libnginx-mod-http-xslt-filter (1.18.0-6ubuntu14.7) ...
-Selecting previously unselected package libnginx-mod-mail.
-Preparing to unpack .../4-libnginx-mod-mail_1.18.0-6ubuntu14.7_amd64.deb ...
-Unpacking libnginx-mod-mail (1.18.0-6ubuntu14.7) ...
-Selecting previously unselected package libnginx-mod-stream.
-Preparing to unpack .../5-libnginx-mod-stream_1.18.0-6ubuntu14.7_amd64.deb ...
-Unpacking libnginx-mod-stream (1.18.0-6ubuntu14.7) ...
-Selecting previously unselected package libnginx-mod-stream-geoip2.
-Preparing to unpack .../6-libnginx-mod-stream-geoip2_1.18.0-6ubuntu14.7_amd64.deb ...
-Unpacking libnginx-mod-stream-geoip2 (1.18.0-6ubuntu14.7) ...
-Selecting previously unselected package nginx-core.
-Preparing to unpack .../7-nginx-core_1.18.0-6ubuntu14.7_amd64.deb ...
-Unpacking nginx-core (1.18.0-6ubuntu14.7) ...
-Selecting previously unselected package nginx.
-Preparing to unpack .../8-nginx_1.18.0-6ubuntu14.7_amd64.deb ...
-Unpacking nginx (1.18.0-6ubuntu14.7) ...
-Setting up nginx-common (1.18.0-6ubuntu14.7) ...
-Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service → /lib/systemd/system/nginx.service.
-Setting up libnginx-mod-http-xslt-filter (1.18.0-6ubuntu14.7) ...
-Setting up libnginx-mod-http-geoip2 (1.18.0-6ubuntu14.7) ...
-Setting up libnginx-mod-mail (1.18.0-6ubuntu14.7) ...
-Setting up libnginx-mod-http-image-filter (1.18.0-6ubuntu14.7) ...
-Setting up libnginx-mod-stream (1.18.0-6ubuntu14.7) ...
-Setting up libnginx-mod-stream-geoip2 (1.18.0-6ubuntu14.7) ...
-Setting up nginx-core (1.18.0-6ubuntu14.7) ...
- * Upgrading binary nginx       [80G [74G[ OK ]
-Setting up nginx (1.18.0-6ubuntu14.7) ...
-Processing triggers for man-db (2.10.2-1) ...
-Processing triggers for ufw (0.36.1-4ubuntu0.1) ...
-[03/24] Menginstall Packet Yang Dibutuhkan
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Reading package lists...
-Building dependency tree...
-Reading state information...
-bash-completion is already the newest version (1:2.11-5ubuntu1).
-bash-completion set to manually installed.
-cron is already the newest version (3.0pl1-137ubuntu3).
-cron set to manually installed.
-openssl is already the newest version (3.0.2-0ubuntu1.20).
-openssl set to manually installed.
-The following additional packages will be installed:
-  unzip
-The following NEW packages will be installed:
-  netcat pwgen socat unzip zip
-0 upgraded, 5 newly installed, 0 to remove and 8 not upgraded.
-Need to get 719 kB of archives.
-After this operation, 2382 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu jammy/universe amd64 netcat all 1.218-4ubuntu1 [2044 B]
-Get:2 http://archive.ubuntu.com/ubuntu jammy/universe amd64 pwgen amd64 2.08-2build1 [17.4 kB]
-Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 unzip amd64 6.0-26ubuntu3.2 [175 kB]
-Get:4 http://archive.ubuntu.com/ubuntu jammy/main amd64 zip amd64 3.0-12build2 [176 kB]
-Get:5 http://archive.ubuntu.com/ubuntu jammy/main amd64 socat amd64 1.7.4.1-3ubuntu4 [349 kB]
-Fetched 719 kB in 2s (342 kB/s)
-Selecting previously unselected package netcat.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 41472 files and directories currently installed.)
-Preparing to unpack .../netcat_1.218-4ubuntu1_all.deb ...
-Unpacking netcat (1.218-4ubuntu1) ...
-Selecting previously unselected package pwgen.
-Preparing to unpack .../pwgen_2.08-2build1_amd64.deb ...
-Unpacking pwgen (2.08-2build1) ...
-Selecting previously unselected package unzip.
-Preparing to unpack .../unzip_6.0-26ubuntu3.2_amd64.deb ...
-Unpacking unzip (6.0-26ubuntu3.2) ...
-Selecting previously unselected package zip.
-Preparing to unpack .../zip_3.0-12build2_amd64.deb ...
-Unpacking zip (3.0-12build2) ...
-Selecting previously unselected package socat.
-Preparing to unpack .../socat_1.7.4.1-3ubuntu4_amd64.deb ...
-Unpacking socat (1.7.4.1-3ubuntu4) ...
-Setting up unzip (6.0-26ubuntu3.2) ...
-Setting up netcat (1.218-4ubuntu1) ...
-Setting up zip (3.0-12build2) ...
-Setting up socat (1.7.4.1-3ubuntu4) ...
-Setting up pwgen (2.08-2build1) ...
-Processing triggers for man-db (2.10.2-1) ...
-
-Running kernel seems to be up-to-date.
-
-No services need to be restarted.
-
-No containers need to be restarted.
-
-No user sessions are running outdated binaries.
-
-No VM guests are running outdated hypervisor (qemu) binaries on this host.
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following NEW packages will be installed:
-  figlet
-0 upgraded, 1 newly installed, 0 to remove and 8 not upgraded.
-Need to get 133 kB of archives.
-After this operation, 752 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu jammy/universe amd64 figlet amd64 2.2.5-3 [133 kB]
-Fetched 133 kB in 1s (157 kB/s)
-Selecting previously unselected package figlet.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 41552 files and directories currently installed.)
-Preparing to unpack .../figlet_2.2.5-3_amd64.deb ...
-Unpacking figlet (2.2.5-3) ...
-Setting up figlet (2.2.5-3) ...
-update-alternatives: using /usr/bin/figlet-figlet to provide /usr/bin/figlet (figlet) in auto mode
-Processing triggers for man-db (2.10.2-1) ...
-
-Running kernel seems to be up-to-date.
-
-No services need to be restarted.
-
-No containers need to be restarted.
-
-No user sessions are running outdated binaries.
-
-No VM guests are running outdated hypervisor (qemu) binaries on this host.
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Hit:1 http://archive.ubuntu.com/ubuntu jammy InRelease
-Hit:2 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
-Hit:3 http://security.ubuntu.com/ubuntu jammy-security InRelease
-Hit:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
-Reading package lists...
-Building dependency tree...
-Reading state information...
-8 packages can be upgraded. Run 'apt list --upgradable' to see them.
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Reading package lists...
-Building dependency tree...
-Reading state information...
-Calculating upgrade...
-The following packages have been kept back:
-  libnss-systemd libpam-systemd libsystemd0 libudev1 systemd systemd-sysv
-  systemd-timesyncd udev
-0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Reading package lists...
-Building dependency tree...
-Reading state information...
-Calculating upgrade...
-The following packages have been kept back:
-  libnss-systemd libpam-systemd libsystemd0 libudev1 systemd systemd-sysv
-  systemd-timesyncd udev
-0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.
-setup.sh: line 320: chronyc: command not found
-setup.sh: line 321: chronyc: command not found
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following NEW packages will be installed:
-  ntpdate
-0 upgraded, 1 newly installed, 0 to remove and 8 not upgraded.
-Need to get 51.5 kB of archives.
-After this operation, 178 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu jammy/universe amd64 ntpdate amd64 1:4.2.8p15+dfsg-1ubuntu2 [51.5 kB]
-Fetched 51.5 kB in 1s (72.5 kB/s)
-Selecting previously unselected package ntpdate.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 41631 files and directories currently installed.)
-Preparing to unpack .../ntpdate_1%3a4.2.8p15+dfsg-1ubuntu2_amd64.deb ...
-Unpacking ntpdate (1:4.2.8p15+dfsg-1ubuntu2) ...
-Setting up ntpdate (1:4.2.8p15+dfsg-1ubuntu2) ...
-Processing triggers for man-db (2.10.2-1) ...
-
-Running kernel seems to be up-to-date.
-
-No services need to be restarted.
-
-No containers need to be restarted.
-
-No user sessions are running outdated binaries.
-
-No VM guests are running outdated hypervisor (qemu) binaries on this host.
-14 Oct 17:32:56 ntpdate[5041]: adjust time server 159.223.60.208 offset -0.006315 sec
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Reading package lists...
-Building dependency tree...
-Reading state information...
-sudo is already the newest version (1.9.9-1ubuntu2.5).
-sudo set to manually installed.
-0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.
-Reading package lists...
-Building dependency tree...
-Reading state information...
-0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following NEW packages will be installed:
-  debconf-utils
-0 upgraded, 1 newly installed, 0 to remove and 8 not upgraded.
-Need to get 57.0 kB of archives.
-After this operation, 108 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu jammy/universe amd64 debconf-utils all 1.5.79ubuntu1 [57.0 kB]
-Fetched 57.0 kB in 1s (86.0 kB/s)
-Selecting previously unselected package debconf-utils.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 41643 files and directories currently installed.)
-Preparing to unpack .../debconf-utils_1.5.79ubuntu1_all.deb ...
-Unpacking debconf-utils (1.5.79ubuntu1) ...
-Setting up debconf-utils (1.5.79ubuntu1) ...
-Processing triggers for man-db (2.10.2-1) ...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-Package 'exim4' is not installed, so not removed
-0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.
-Reading package lists...
-Building dependency tree...
-Reading state information...
-Package 'firewalld' is not installed, so not removed
-The following packages will be REMOVED:
-  ufw*
-0 upgraded, 0 newly installed, 1 to remove and 8 not upgraded.
-After this operation, 850 kB disk space will be freed.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 41675 files and directories currently installed.)
-Removing ufw (0.36.1-4ubuntu0.1) ...
-Skip stopping firewall: ufw (not enabled)
-Processing triggers for man-db (2.10.2-1) ...
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 41584 files and directories currently installed.)
-Purging configuration files for ufw (0.36.1-4ubuntu0.1) ...
-Processing triggers for rsyslog (8.2112.0-2ubuntu2.2) ...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-software-properties-common is already the newest version (0.99.22.9).
-0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.
-Reading package lists...
-Building dependency tree...
-Reading state information...
-Package python is not available, but is referred to by another package.
-This may mean that the package is missing, has been obsoleted, or
-is only available from another source
-However the following packages replace it:
-  2to3 python2-minimal python2 dh-python python-is-python3
-
-E: Package 'python' has no installation candidate
-    [OK] Packet Yang Dibutuhkan
-
-[04/24] Menentukan domain otomatis via Cloudflare
-setup.sh: line 350: /etc/v2ray/domain: No such file or directory
-    [INFO] Domain otomatis digunakan: p8oy1p.capzsmodzs.biz.id
-[05/24] Konfigurasi Password Root
-Ingin mengganti password root sekarang? [y/N]:     [INFO] Penggantian password root dilewati
-    [OK] Konfigurasi Password Root
-[06/24] Memasang SSL Pada Domain
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  1  205k    1  4096    0     0   3243      0  0:01:04  0:00:01  0:01:03  3245 17  205k   17 36158    0     0  22504      0  0:00:09  0:00:01  0:00:08 22500100  205k  100  205k    0     0   105k      0  0:00:01  0:00:01 --:--:--  105k
-[Tue Oct 14 17:33:43 WIB 2025] Installing from online archive.
-[Tue Oct 14 17:33:43 WIB 2025] Downloading https://github.com/acmesh-official/acme.sh/archive/master.tar.gz
-[Tue Oct 14 17:33:44 WIB 2025] Extracting master.tar.gz
-[Tue Oct 14 17:33:44 WIB 2025] Installing to /root/.acme.sh
-[Tue Oct 14 17:33:44 WIB 2025] Installed to /root/.acme.sh/acme.sh
-[Tue Oct 14 17:33:44 WIB 2025] bash has been found. Changing the shebang to use bash as preferred.
-[Tue Oct 14 17:33:46 WIB 2025] OK
-[Tue Oct 14 17:33:46 WIB 2025] Install success!
-[Tue Oct 14 17:33:46 WIB 2025] Upgrade success!
-[Tue Oct 14 17:33:46 WIB 2025] Changed default CA to: https://acme-v02.api.letsencrypt.org/directory
-[Tue Oct 14 17:33:47 WIB 2025] Using CA: https://acme-v02.api.letsencrypt.org/directory
-[Tue Oct 14 17:33:47 WIB 2025] Standalone mode.
-[Tue Oct 14 17:33:47 WIB 2025] Account key creation OK.
-[Tue Oct 14 17:33:47 WIB 2025] Registering account: https://acme-v02.api.letsencrypt.org/directory
-[Tue Oct 14 17:33:49 WIB 2025] Registered
-[Tue Oct 14 17:33:49 WIB 2025] ACCOUNT_THUMBPRINT='ygLtUfoq-s5kUIPqrk4OTK2K4ed73LKiV8InTs_nHvE'
-[Tue Oct 14 17:33:49 WIB 2025] Creating domain key
-[Tue Oct 14 17:33:49 WIB 2025] The domain key is here: /root/.acme.sh/p8oy1p.capzsmodzs.biz.id_ecc/p8oy1p.capzsmodzs.biz.id.key
-[Tue Oct 14 17:33:49 WIB 2025] Single domain='p8oy1p.capzsmodzs.biz.id'
-[Tue Oct 14 17:33:51 WIB 2025] Getting webroot for domain='p8oy1p.capzsmodzs.biz.id'
-[Tue Oct 14 17:33:51 WIB 2025] Verifying: p8oy1p.capzsmodzs.biz.id
-[Tue Oct 14 17:33:51 WIB 2025] Standalone mode server
-[Tue Oct 14 17:33:53 WIB 2025] Pending. The CA is processing your order, please wait. (1/30)
-[Tue Oct 14 17:33:56 WIB 2025] Pending. The CA is processing your order, please wait. (2/30)
-[Tue Oct 14 17:33:59 WIB 2025] Pending. The CA is processing your order, please wait. (3/30)
-[Tue Oct 14 17:34:01 WIB 2025] Pending. The CA is processing your order, please wait. (4/30)
-[Tue Oct 14 17:34:04 WIB 2025] Pending. The CA is processing your order, please wait. (5/30)
-[Tue Oct 14 17:34:07 WIB 2025] Pending. The CA is processing your order, please wait. (6/30)
-[Tue Oct 14 17:34:10 WIB 2025] Success
-[Tue Oct 14 17:34:10 WIB 2025] Verification finished, beginning signing.
-[Tue Oct 14 17:34:10 WIB 2025] Let's finalize the order.
-[Tue Oct 14 17:34:10 WIB 2025] Le_OrderFinalize='https://acme-v02.api.letsencrypt.org/acme/finalize/2724969891/437903671861'
-[Tue Oct 14 17:34:11 WIB 2025] Downloading cert.
-[Tue Oct 14 17:34:11 WIB 2025] Le_LinkCert='https://acme-v02.api.letsencrypt.org/acme/cert/0590bad870c2a3bcce540ac31024b912a409'
-[Tue Oct 14 17:34:12 WIB 2025] Cert success.
------BEGIN CERTIFICATE-----
-MIIDmzCCAyKgAwIBAgISBZC62HDCo7zOVArDECS5EqQJMAoGCCqGSM49BAMDMDIx
-CzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQDEwJF
-NzAeFw0yNTEwMTQwOTM1NDFaFw0yNjAxMTIwOTM1NDBaMCMxITAfBgNVBAMTGHA4
-b3kxcC5jYXB6c21vZHpzLmJpei5pZDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA
-BP4p4R/7iscp+1MBsOlM6Km+Jxxg/dPU8oEBaTUEge0DxBJotOgQ86RxbOOx/osh
-lEPCYFWr0mi+nC013ugXC+ujggIlMIICITAOBgNVHQ8BAf8EBAMCB4AwHQYDVR0l
-BBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYE
-FO/Tl0Owi7vCUz/bkyyvLlpZ83iKMB8GA1UdIwQYMBaAFK5IntyHHUSgb9qi5WB0
-BHjCnACAMDIGCCsGAQUFBwEBBCYwJDAiBggrBgEFBQcwAoYWaHR0cDovL2U3Lmku
-bGVuY3Iub3JnLzAjBgNVHREEHDAaghhwOG95MXAuY2FwenNtb2R6cy5iaXouaWQw
-EwYDVR0gBAwwCjAIBgZngQwBAgEwLQYDVR0fBCYwJDAioCCgHoYcaHR0cDovL2U3
-LmMubGVuY3Iub3JnLzEwLmNybDCCAQMGCisGAQQB1nkCBAIEgfQEgfEA7wB1AMs4
-9xWJfIShRF9bwd37yW7ymlnNRwppBYWwyxTDFFjnAAABmeJI4h4AAAQDAEYwRAIg
-XvQG2Z5x94jcVtesbrx0GP9MFnAY8EtTSKcHFnEp6ogCIAJlGjK9pIgJHlFGE5c2
-2JrPe1BydWDbX583pn7Ud5p5AHYAlpdkv1VYl633Q4doNwhCd+nwOtX2pPM2bkak
-Pw/KqcYAAAGZ4kjiSgAABAMARzBFAiEA3gf1FTS7DfmjkGm7i4JQH+/CUKPU4/6r
-zI+/1loJIPUCIFY28zJkLbU/Ekakl0P+rq3sH2zIOGmWoQVau/YPA9uzMAoGCCqG
-SM49BAMDA2cAMGQCMFQD9d2HuONHfBHIL3xHVIzbqUCVHfGD6CiFezfwSk6YkUl7
-6NjYWw27NxAWmeAEDgIwKqE+r2bdR8Rt9qsEKIFZMGf/elKeeaQ1ZJ2BUrc5TwJT
-9VIq0dLBP1JSKnJydR+v
------END CERTIFICATE-----
-[Tue Oct 14 17:34:12 WIB 2025] Your cert is in: /root/.acme.sh/p8oy1p.capzsmodzs.biz.id_ecc/p8oy1p.capzsmodzs.biz.id.cer
-[Tue Oct 14 17:34:12 WIB 2025] Your cert key is in: /root/.acme.sh/p8oy1p.capzsmodzs.biz.id_ecc/p8oy1p.capzsmodzs.biz.id.key
-[Tue Oct 14 17:34:12 WIB 2025] The intermediate CA cert is in: /root/.acme.sh/p8oy1p.capzsmodzs.biz.id_ecc/ca.cer
-[Tue Oct 14 17:34:12 WIB 2025] And the full-chain cert is in: /root/.acme.sh/p8oy1p.capzsmodzs.biz.id_ecc/fullchain.cer
-[Tue Oct 14 17:34:13 WIB 2025] Installing key to: /etc/xray/xray.key
-[Tue Oct 14 17:34:13 WIB 2025] Installing full chain to: /etc/xray/xray.crt
-    [OK] SSL Certificate
-[07/24] Core Xray 1.8.1 Latest Version
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-100 31120  100 31120    0     0  71768      0 --:--:-- --:--:-- --:--:-- 71768
-info: Installing specified Xray version v1.8.1 for x86_64
-Downloading Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.1/Xray-linux-64.zip
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-100 11.8M  100 11.8M    0     0  24.7M      0 --:--:-- --:--:-- --:--:-- 24.7M
-ok.
-Downloading verification file for Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.1/Xray-linux-64.zip.dgst
-ok.
-info: Extract the Xray package to /tmp/tmp.zSG5sTfZdI and prepare it for installation.
-rm: cannot remove '/etc/systemd/system/xray.service.d/10-donot_touch_multi_conf.conf': No such file or directory
-rm: cannot remove '/etc/systemd/system/xray@.service.d/10-donot_touch_multi_conf.conf': No such file or directory
-info: Systemd service files have been installed successfully!
-[31mwarning: [32mThe following are the actual parameters for the xray service startup.
-[31mwarning: [32mPlease make sure the configuration file path is correctly set.(B[m
-# /etc/systemd/system/xray.service
-[Unit]
-Description=Xray Service
-Documentation=https://github.com/xtls
-After=network.target nss-lookup.target
-
-[Service]
-User=www-data
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
-Restart=on-failure
-RestartPreventExitStatus=23
-LimitNPROC=10000
-LimitNOFILE=1000000
-
-[Install]
-WantedBy=multi-user.target
-
-# /etc/systemd/system/xray.service.d/10-donot_touch_single_conf.conf
-# In case you have a good reason to do so, duplicate this file in the same directory and make your customizes there.
-# Or all changes you made will be lost!  # Refer: https://www.freedesktop.org/software/systemd/man/systemd.unit.html
-[Service]
-ExecStart=
-ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
-
-installed: /usr/local/bin/xray
-installed: /usr/local/share/xray/geoip.dat
-installed: /usr/local/share/xray/geosite.dat
-installed: /usr/local/etc/xray/config.json
-installed: /etc/systemd/system/xray.service
-installed: /etc/systemd/system/xray@.service
-removed: /tmp/tmp.zSG5sTfZdI
-info: Xray v1.8.1 is installed.
-You may need to execute a command to remove dependent software: apt purge curl unzip
-Created symlink /etc/systemd/system/multi-user.target.wants/xray.service → /etc/systemd/system/xray.service.
-info: Enable and start the Xray service
-    [OK] Core Xray 1.8.1 Latest Version
-[08/24] Memasang Konfigurasi Packet
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   387  100   387    0     0   1220      0 --:--:-- --:--:-- --:--:--  1224
------BEGIN CERTIFICATE-----
-MIIDmzCCAyKgAwIBAgISBZC62HDCo7zOVArDECS5EqQJMAoGCCqGSM49BAMDMDIx
-CzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQDEwJF
-NzAeFw0yNTEwMTQwOTM1NDFaFw0yNjAxMTIwOTM1NDBaMCMxITAfBgNVBAMTGHA4
-b3kxcC5jYXB6c21vZHpzLmJpei5pZDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA
-BP4p4R/7iscp+1MBsOlM6Km+Jxxg/dPU8oEBaTUEge0DxBJotOgQ86RxbOOx/osh
-lEPCYFWr0mi+nC013ugXC+ujggIlMIICITAOBgNVHQ8BAf8EBAMCB4AwHQYDVR0l
-BBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYE
-FO/Tl0Owi7vCUz/bkyyvLlpZ83iKMB8GA1UdIwQYMBaAFK5IntyHHUSgb9qi5WB0
-BHjCnACAMDIGCCsGAQUFBwEBBCYwJDAiBggrBgEFBQcwAoYWaHR0cDovL2U3Lmku
-bGVuY3Iub3JnLzAjBgNVHREEHDAaghhwOG95MXAuY2FwenNtb2R6cy5iaXouaWQw
-EwYDVR0gBAwwCjAIBgZngQwBAgEwLQYDVR0fBCYwJDAioCCgHoYcaHR0cDovL2U3
-LmMubGVuY3Iub3JnLzEwLmNybDCCAQMGCisGAQQB1nkCBAIEgfQEgfEA7wB1AMs4
-9xWJfIShRF9bwd37yW7ymlnNRwppBYWwyxTDFFjnAAABmeJI4h4AAAQDAEYwRAIg
-XvQG2Z5x94jcVtesbrx0GP9MFnAY8EtTSKcHFnEp6ogCIAJlGjK9pIgJHlFGE5c2
-2JrPe1BydWDbX583pn7Ud5p5AHYAlpdkv1VYl633Q4doNwhCd+nwOtX2pPM2bkak
-Pw/KqcYAAAGZ4kjiSgAABAMARzBFAiEA3gf1FTS7DfmjkGm7i4JQH+/CUKPU4/6r
-zI+/1loJIPUCIFY28zJkLbU/Ekakl0P+rq3sH2zIOGmWoQVau/YPA9uzMAoGCCqG
-SM49BAMDA2cAMGQCMFQD9d2HuONHfBHIL3xHVIzbqUCVHfGD6CiFezfwSk6YkUl7
-6NjYWw27NxAWmeAEDgIwKqE+r2bdR8Rt9qsEKIFZMGf/elKeeaQ1ZJ2BUrc5TwJT
-9VIq0dLBP1JSKnJydR+v
------END CERTIFICATE-----
-
------BEGIN CERTIFICATE-----
-MIIEVzCCAj+gAwIBAgIRAKp18eYrjwoiCWbTi7/UuqEwDQYJKoZIhvcNAQELBQAw
-TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
-cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjQwMzEzMDAwMDAw
-WhcNMjcwMzEyMjM1OTU5WjAyMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3Mg
-RW5jcnlwdDELMAkGA1UEAxMCRTcwdjAQBgcqhkjOPQIBBgUrgQQAIgNiAARB6AST
-CFh/vjcwDMCgQer+VtqEkz7JANurZxLP+U9TCeioL6sp5Z8VRvRbYk4P1INBmbef
-QHJFHCxcSjKmwtvGBWpl/9ra8HW0QDsUaJW2qOJqceJ0ZVFT3hbUHifBM/2jgfgw
-gfUwDgYDVR0PAQH/BAQDAgGGMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcD
-ATASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdDgQWBBSuSJ7chx1EoG/aouVgdAR4
-wpwAgDAfBgNVHSMEGDAWgBR5tFnme7bl5AFzgAiIyBpY9umbbjAyBggrBgEFBQcB
-AQQmMCQwIgYIKwYBBQUHMAKGFmh0dHA6Ly94MS5pLmxlbmNyLm9yZy8wEwYDVR0g
-BAwwCjAIBgZngQwBAgEwJwYDVR0fBCAwHjAcoBqgGIYWaHR0cDovL3gxLmMubGVu
-Y3Iub3JnLzANBgkqhkiG9w0BAQsFAAOCAgEAjx66fDdLk5ywFn3CzA1w1qfylHUD
-aEf0QZpXcJseddJGSfbUUOvbNR9N/QQ16K1lXl4VFyhmGXDT5Kdfcr0RvIIVrNxF
-h4lqHtRRCP6RBRstqbZ2zURgqakn/Xip0iaQL0IdfHBZr396FgknniRYFckKORPG
-yM3QKnd66gtMst8I5nkRQlAg/Jb+Gc3egIvuGKWboE1G89NTsN9LTDD3PLj0dUMr
-OIuqVjLB8pEC6yk9enrlrqjXQgkLEYhXzq7dLafv5Vkig6Gl0nuuqjqfp0Q1bi1o
-yVNAlXe6aUXw92CcghC9bNsKEO1+M52YY5+ofIXlS/SEQbvVYYBLZ5yeiglV6t3S
-M6H+vTG0aP9YHzLn/KVOHzGQfXDP7qM5tkf+7diZe7o2fw6O7IvN6fsQXEQQj8TJ
-UXJxv2/uJhcuy/tSDgXwHM8Uk34WNbRT7zGTGkQRX0gsbjAea/jYAoWv0ZvQRwpq
-Pe79D/i7Cep8qWnA+7AE/3B3S/3dEEYmc0lpe1366A/6GEgk3ktr9PEoQrLChs6I
-tu3wnNLB2euC8IKGLQFpGtOO/2/hiAKjyajaBP25w1jF0Wl8Bbqne3uZ2q1GyPFJ
-YRmT7/OXpmOH/FVLtwS+8ng1cAmpCujPwteJZNcDG0sF2n/sc0+SQf49fdyUK0ty
-+VUwFj9tmWxyR/M=
------END CERTIFICATE-----
------BEGIN EC PRIVATE KEY-----
-MHcCAQEEIPhtNkrF5YZVdgSetdl3rZHmshaV4slrceVO4j9t+HSfoAoGCCqGSM49
-AwEHoUQDQgAE/inhH/uKxyn7UwGw6Uzoqb4nHGD909TygQFpNQSB7QPEEmi06BDz
-pHFs47H+iyGUQ8JgVavSaL6cLTXe6BcL6w==
------END EC PRIVATE KEY-----
-    [OK] Konfigurasi Packet
-[09/24] Memasang Password SSH
---2025-10-14 17:34:19--  https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/files/password
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 1440 (1.4K) [text/plain]
-Saving to: ‘/etc/pam.d/common-password’
-
-     0K .                                                     100% 13.0M=0s
-
-2025-10-14 17:34:20 (13.0 MB/s) - ‘/etc/pam.d/common-password’ saved [1440/1440]
-
-Created symlink /etc/systemd/system/multi-user.target.wants/rc-local.service → /etc/systemd/system/rc-local.service.
-    [OK] Password SSH
-[10/24] Memasang Service Limit IP & Quota
-Created symlink /etc/systemd/system/multi-user.target.wants/limitvmess.service → /etc/systemd/system/limitvmess.service.
-Created symlink /etc/systemd/system/multi-user.target.wants/limitvless.service → /etc/systemd/system/limitvless.service.
-Created symlink /etc/systemd/system/multi-user.target.wants/limittrojan.service → /etc/systemd/system/limittrojan.service.
-Created symlink /etc/systemd/system/multi-user.target.wants/limitshadowsocks.service → /etc/systemd/system/limitshadowsocks.service.
-[H[2J[3JCreated symlink /etc/systemd/system/multi-user.target.wants/vmip.service → /etc/systemd/system/vmip.service.
-Created symlink /etc/systemd/system/multi-user.target.wants/vlip.service → /etc/systemd/system/vlip.service.
-Created symlink /etc/systemd/system/multi-user.target.wants/trip.service → /etc/systemd/system/trip.service.
-Created symlink /etc/systemd/system/multi-user.target.wants/udp-mini-1.service → /etc/systemd/system/udp-mini-1.service.
-Created symlink /etc/systemd/system/multi-user.target.wants/udp-mini-2.service → /etc/systemd/system/udp-mini-2.service.
-Created symlink /etc/systemd/system/multi-user.target.wants/udp-mini-3.service → /etc/systemd/system/udp-mini-3.service.
-    [OK] Limit IP Service
-[11/24] Memasang modul SlowDNS Server
-    [OK] SlowDNS
-[12/24] Memasang SSHD
-Restarting ssh (via systemctl): ssh.service.
-● ssh.service - OpenBSD Secure Shell server
-     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)
-     Active: active (running) since Tue 2025-10-14 17:34:30 WIB; 40ms ago
-       Docs: man:sshd(8)
-             man:sshd_config(5)
-    Process: 10107 ExecStartPre=/usr/sbin/sshd -t (code=exited, status=0/SUCCESS)
-   Main PID: 10108 (sshd)
-      Tasks: 1 (limit: 4652)
-     Memory: 1.7M
-        CPU: 28ms
-     CGroup: /system.slice/ssh.service
-             └─10108 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
-
-Oct 14 17:34:30 ubuntu systemd[1]: Starting OpenBSD Secure Shell server...
-Oct 14 17:34:30 ubuntu sshd[10108]: Server listening on 0.0.0.0 port 2223.
-Oct 14 17:34:30 ubuntu sshd[10108]: Server listening on :: port 2223.
-Oct 14 17:34:30 ubuntu sshd[10108]: Server listening on 0.0.0.0 port 2222.
-Oct 14 17:34:30 ubuntu systemd[1]: Started OpenBSD Secure Shell server.
-Oct 14 17:34:30 ubuntu sshd[10108]: Server listening on :: port 2222.
-Oct 14 17:34:30 ubuntu sshd[10108]: Server listening on 0.0.0.0 port 22.
-Oct 14 17:34:30 ubuntu sshd[10108]: Server listening on :: port 22.
-    [OK] SSHD
-[13/24] Menginstall Dropbear
-Restarting dropbear (via systemctl): dropbear.service.
-● dropbear.service - LSB: Lightweight SSH server
-     Loaded: loaded (/etc/init.d/dropbear; generated)
-     Active: active (running) since Tue 2025-10-14 17:34:37 WIB; 31ms ago
-       Docs: man:systemd-sysv-generator(8)
-    Process: 10397 ExecStart=/etc/init.d/dropbear start (code=exited, status=0/SUCCESS)
-      Tasks: 1 (limit: 4652)
-     Memory: 344.0K
-        CPU: 15ms
-     CGroup: /system.slice/dropbear.service
-             └─10402 /usr/sbin/dropbear -p 143 -W 65536 -p 109 -b /etc/kyt.txt
-
-Oct 14 17:34:37 ubuntu systemd[1]: Starting LSB: Lightweight SSH server...
-Oct 14 17:34:37 ubuntu dropbear[10397]: Starting Dropbear SSH server: dropbear.
-Oct 14 17:34:37 ubuntu dropbear[10402]: Running in background
-Oct 14 17:34:37 ubuntu systemd[1]: Started LSB: Lightweight SSH server.
-    [OK] Dropbear
-    [INFO] Interface jaringan default terdeteksi: ens3
-[14/24] Menginstall Vnstat
-Restarting vnstat (via systemctl): vnstat.service.
---2025-10-14 17:34:50--  https://humdi.net/vnstat/vnstat-2.6.tar.gz
-Resolving humdi.net (humdi.net)... 213.168.251.41, 2a01:7e00::f03c:91ff:fe37:3421
-Connecting to humdi.net (humdi.net)|213.168.251.41|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 275751 (269K) [application/x-gzip]
-Saving to: ‘vnstat-2.6.tar.gz’
-
-     0K .......... .......... .......... .......... .......... 18%  149K 1s
-    50K .......... .......... .......... .......... .......... 37% 1.23M 1s
-   100K .......... .......... .......... .......... .......... 55%  389K 0s
-   150K .......... .......... .......... .......... .......... 74% 1.24M 0s
-   200K .......... .......... .......... .......... .......... 92%  389K 0s
-   250K .......... .........                                  100% 79.8M=0.7s
-
-2025-10-14 17:34:52 (401 KB/s) - ‘vnstat-2.6.tar.gz’ saved [275751/275751]
-
-vnstat-2.6/
-vnstat-2.6/compile
-vnstat-2.6/configure
-vnstat-2.6/config.sub
-vnstat-2.6/examples/
-vnstat-2.6/examples/init.d/
-vnstat-2.6/examples/init.d/centos/
-vnstat-2.6/examples/init.d/centos/vnstat
-vnstat-2.6/examples/init.d/ubuntu/
-vnstat-2.6/examples/init.d/ubuntu/vnstat
-vnstat-2.6/examples/init.d/debian/
-vnstat-2.6/examples/init.d/debian/vnstat
-vnstat-2.6/examples/init.d/redhat/
-vnstat-2.6/examples/init.d/redhat/vnstat
-vnstat-2.6/examples/vnstat-json.php
-vnstat-2.6/examples/vnstat-json.cgi
-vnstat-2.6/examples/systemd/
-vnstat-2.6/examples/systemd/vnstat.service
-vnstat-2.6/examples/systemd/simple/
-vnstat-2.6/examples/systemd/simple/vnstat.service
-vnstat-2.6/examples/vnstat.cgi
-vnstat-2.6/examples/upstart/
-vnstat-2.6/examples/upstart/vnstat.conf
-vnstat-2.6/examples/launchd/
-vnstat-2.6/examples/launchd/net.humdi.vnstat.plist
-vnstat-2.6/UPGRADE
-vnstat-2.6/test-driver
-vnstat-2.6/config.guess
-vnstat-2.6/install-sh
-vnstat-2.6/CHANGES
-vnstat-2.6/src/
-vnstat-2.6/src/dbjson.h
-vnstat-2.6/src/traffic.c
-vnstat-2.6/src/common.c
-vnstat-2.6/src/vnstat_func.h
-vnstat-2.6/src/dbxml.h
-vnstat-2.6/src/vnstat_func.c
-vnstat-2.6/src/cfg.c
-vnstat-2.6/src/cfgoutput.c
-vnstat-2.6/src/image.h
-vnstat-2.6/src/misc.h
-vnstat-2.6/src/vnstat.c
-vnstat-2.6/src/dbshow.c
-vnstat-2.6/src/vnstati.h
-vnstat-2.6/src/vnstatd.c
-vnstat-2.6/src/dbshow.h
-vnstat-2.6/src/id.c
-vnstat-2.6/src/vnstatd.h
-vnstat-2.6/src/fs.h
-vnstat-2.6/src/dbsql.c
-vnstat-2.6/src/traffic.h
-vnstat-2.6/src/config.h.in
-vnstat-2.6/src/ifinfo.h
-vnstat-2.6/src/dbjson.c
-vnstat-2.6/src/datacache.h
-vnstat-2.6/src/cfgoutput.h
-vnstat-2.6/src/misc.c
-vnstat-2.6/src/ifinfo.c
-vnstat-2.6/src/iflist.h
-vnstat-2.6/src/fs.c
-vnstat-2.6/src/cfg.h
-vnstat-2.6/src/common.h
-vnstat-2.6/src/iflist.c
-vnstat-2.6/src/datacache.c
-vnstat-2.6/src/image.c
-vnstat-2.6/src/id.h
-vnstat-2.6/src/dbaccess.c
-vnstat-2.6/src/daemon.c
-vnstat-2.6/src/daemon.h
-vnstat-2.6/src/dbaccess.h
-vnstat-2.6/src/ibw.h
-vnstat-2.6/src/dbxml.c
-vnstat-2.6/src/dbsql.h
-vnstat-2.6/src/ibw.c
-vnstat-2.6/src/vnstati.c
-vnstat-2.6/missing
-vnstat-2.6/configure.ac
-vnstat-2.6/INSTALL_BSD
-vnstat-2.6/aclocal.m4
-vnstat-2.6/FAQ
-vnstat-2.6/Makefile.in
-vnstat-2.6/man/
-vnstat-2.6/man/vnstat.conf.5
-vnstat-2.6/man/vnstati.1
-vnstat-2.6/man/vnstatd.8
-vnstat-2.6/man/vnstat.1
-vnstat-2.6/README
-vnstat-2.6/INSTALL
-vnstat-2.6/depcomp
-vnstat-2.6/cfg/
-vnstat-2.6/cfg/vnstat.conf
-vnstat-2.6/UNINSTALL
-vnstat-2.6/Makefile.am
-vnstat-2.6/tests/
-vnstat-2.6/tests/id_tests.c
-vnstat-2.6/tests/misc_tests.h
-vnstat-2.6/tests/daemon_tests.h
-vnstat-2.6/tests/daemon_tests.c
-vnstat-2.6/tests/datacache_tests.h
-vnstat-2.6/tests/misc_tests.c
-vnstat-2.6/tests/image_tests.h
-vnstat-2.6/tests/vnstat_tests.h
-vnstat-2.6/tests/common_tests.h
-vnstat-2.6/tests/iflist_tests.c
-vnstat-2.6/tests/cli_tests.h
-vnstat-2.6/tests/datacache_tests.c
-vnstat-2.6/tests/config_tests.h
-vnstat-2.6/tests/fs_tests.h
-vnstat-2.6/tests/common_tests.c
-vnstat-2.6/tests/vnstat_tests.c
-vnstat-2.6/tests/config_tests.c
-vnstat-2.6/tests/cli_tests.c
-vnstat-2.6/tests/dbsql_tests.h
-vnstat-2.6/tests/database_tests.h
-vnstat-2.6/tests/id_tests.h
-vnstat-2.6/tests/parseargs_tests.c
-vnstat-2.6/tests/ifinfo_tests.c
-vnstat-2.6/tests/ifinfo_tests.h
-vnstat-2.6/tests/iflist_tests.h
-vnstat-2.6/tests/database_tests.c
-vnstat-2.6/tests/image_tests.c
-vnstat-2.6/tests/parseargs_tests.h
-vnstat-2.6/tests/dbsql_tests.c
-vnstat-2.6/tests/fs_tests.c
-vnstat-2.6/COPYING
-checking for a BSD-compatible install... /usr/bin/install -c
-checking whether build environment is sane... yes
-checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
-checking for gawk... gawk
-checking whether make sets $(MAKE)... yes
-checking whether make supports nested variables... yes
-checking whether to enable maintainer-specific portions of Makefiles... no
-checking for gcc... gcc
-checking whether the C compiler works... yes
-checking for C compiler default output file name... a.out
-checking for suffix of executables... 
-checking whether we are cross compiling... no
-checking for suffix of object files... o
-checking whether we are using the GNU C compiler... yes
-checking whether gcc accepts -g... yes
-checking for gcc option to accept ISO C89... none needed
-checking whether gcc understands -c and -o together... yes
-checking for style of include used by make... GNU
-checking dependency style of gcc... gcc3
-checking whether make sets $(MAKE)... (cached) yes
-checking for pow in -lm... yes
-checking for sqlite3_prepare_v2 in -lsqlite3... yes
-checking for gdImagePng in -lgd... no
-checking for pkg-config... no
-checking for CHECK... no
-configure: testcases can not be execute without check installed
-checking how to run the C preprocessor... gcc -E
-checking for grep that handles long lines and -e... /usr/bin/grep
-checking for egrep... /usr/bin/grep -E
-checking for ANSI C header files... yes
-checking for sys/types.h... yes
-checking for sys/stat.h... yes
-checking for stdlib.h... yes
-checking for string.h... yes
-checking for memory.h... yes
-checking for strings.h... yes
-checking for inttypes.h... yes
-checking for stdint.h... yes
-checking for unistd.h... yes
-checking fcntl.h usability... yes
-checking fcntl.h presence... yes
-checking for fcntl.h... yes
-checking for inttypes.h... (cached) yes
-checking locale.h usability... yes
-checking locale.h presence... yes
-checking for locale.h... yes
-checking for stdint.h... (cached) yes
-checking for stdlib.h... (cached) yes
-checking for string.h... (cached) yes
-checking sys/file.h usability... yes
-checking sys/file.h presence... yes
-checking for sys/file.h... yes
-checking sys/mount.h usability... yes
-checking sys/mount.h presence... yes
-checking for sys/mount.h... yes
-checking sys/param.h usability... yes
-checking sys/param.h presence... yes
-checking for sys/param.h... yes
-checking sys/socket.h usability... yes
-checking sys/socket.h presence... yes
-checking for sys/socket.h... yes
-checking sys/statvfs.h usability... yes
-checking sys/statvfs.h presence... yes
-checking for sys/statvfs.h... yes
-checking sys/time.h usability... yes
-checking sys/time.h presence... yes
-checking for sys/time.h... yes
-checking syslog.h usability... yes
-checking syslog.h presence... yes
-checking for syslog.h... yes
-checking for unistd.h... (cached) yes
-checking wchar.h usability... yes
-checking wchar.h presence... yes
-checking for wchar.h... yes
-checking build system type... x86_64-unknown-linux-gnu
-checking host system type... x86_64-unknown-linux-gnu
-checking whether IFLA_STATS64 is declared... yes
-checking whether O_CLOEXEC is declared... yes
-checking whether SQLITE_CHECKPOINT_RESTART is declared... yes
-checking whether SQLITE_CHECKPOINT_TRUNCATE is declared... yes
-checking for uid_t in sys/types.h... yes
-checking for int32_t... yes
-checking for mode_t... yes
-checking for size_t... yes
-checking for uint32_t... yes
-checking for uint64_t... yes
-checking for unistd.h... (cached) yes
-checking for working chown... yes
-checking for pid_t... yes
-checking vfork.h usability... no
-checking vfork.h presence... no
-checking for vfork.h... no
-checking for fork... yes
-checking for vfork... yes
-checking for working fork... yes
-checking for working vfork... (cached) yes
-checking whether time.h and sys/time.h may both be included... yes
-checking for sys/time.h... (cached) yes
-checking for unistd.h... (cached) yes
-checking for alarm... yes
-checking for working mktime... yes
-checking for dup2... yes
-checking for localtime_r... yes
-checking for memset... yes
-checking for mkdir... yes
-checking for pow... yes
-checking for rmdir... yes
-checking for setlocale... yes
-checking for strcasecmp... yes
-checking for strchr... yes
-checking for strdup... yes
-checking for strerror... yes
-checking for strncasecmp... yes
-checking for strstr... yes
-checking for strtol... yes
-checking for strtoul... yes
-checking for strtoull... yes
-checking for tzset... yes
-checking for mbstowcs... yes
-checking for wcswidth... yes
-checking that generated files are newer than configure... done
-configure: creating ./config.status
-config.status: creating Makefile
-config.status: creating src/config.h
-config.status: executing depfiles commands
-configure: 
-configure:  ============================================== 
-configure: 
-configure:          host: x86_64-unknown-linux-gnu 
-configure:         build: x86_64-unknown-linux-gnu 
-configure: 
-configure:        prefix: /usr     
-configure:    sysconfdir: /etc 
-configure: 
-configure:    Install paths 
-configure: 
-configure:     vnstat: /usr/bin/vnstat 
-configure:    vnstatd: /usr/sbin/vnstatd 
-configure:     config: /etc/vnstat.conf 
-configure: 
-configure:           Tests: unavailable 
-configure:    Image output: disabled 
-configure: 
-configure:  ============================================== 
-configure: 
-Making all in .
-make[1]: Entering directory '/root/vnstat-2.6'
-depbase=`echo src/vnstat.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/vnstat.o -MD -MP -MF $depbase.Tpo -c -o src/vnstat.o src/vnstat.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/vnstat_func.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/vnstat_func.o -MD -MP -MF $depbase.Tpo -c -o src/vnstat_func.o src/vnstat_func.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/ifinfo.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/ifinfo.o -MD -MP -MF $depbase.Tpo -c -o src/ifinfo.o src/ifinfo.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/iflist.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/iflist.o -MD -MP -MF $depbase.Tpo -c -o src/iflist.o src/iflist.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/dbsql.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/dbsql.o -MD -MP -MF $depbase.Tpo -c -o src/dbsql.o src/dbsql.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/dbxml.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/dbxml.o -MD -MP -MF $depbase.Tpo -c -o src/dbxml.o src/dbxml.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/dbjson.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/dbjson.o -MD -MP -MF $depbase.Tpo -c -o src/dbjson.o src/dbjson.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/dbshow.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/dbshow.o -MD -MP -MF $depbase.Tpo -c -o src/dbshow.o src/dbshow.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/common.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/common.o -MD -MP -MF $depbase.Tpo -c -o src/common.o src/common.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/misc.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/misc.o -MD -MP -MF $depbase.Tpo -c -o src/misc.o src/misc.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/cfg.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/cfg.o -MD -MP -MF $depbase.Tpo -c -o src/cfg.o src/cfg.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/cfgoutput.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/cfgoutput.o -MD -MP -MF $depbase.Tpo -c -o src/cfgoutput.o src/cfgoutput.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/ibw.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/ibw.o -MD -MP -MF $depbase.Tpo -c -o src/ibw.o src/ibw.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/fs.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/fs.o -MD -MP -MF $depbase.Tpo -c -o src/fs.o src/fs.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/id.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/id.o -MD -MP -MF $depbase.Tpo -c -o src/id.o src/id.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/traffic.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/traffic.o -MD -MP -MF $depbase.Tpo -c -o src/traffic.o src/traffic.c &&\
-mv -f $depbase.Tpo $depbase.Po
-gcc  -g -O2 -I/usr/local/include  -L/usr/local/lib -o vnstat src/vnstat.o src/vnstat_func.o src/ifinfo.o src/iflist.o src/dbsql.o src/dbxml.o src/dbjson.o src/dbshow.o src/common.o src/misc.o src/cfg.o src/cfgoutput.o src/ibw.o src/fs.o src/id.o src/traffic.o  -lsqlite3 -lm 
-depbase=`echo src/vnstatd.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/vnstatd.o -MD -MP -MF $depbase.Tpo -c -o src/vnstatd.o src/vnstatd.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/dbaccess.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/dbaccess.o -MD -MP -MF $depbase.Tpo -c -o src/dbaccess.o src/dbaccess.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/datacache.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/datacache.o -MD -MP -MF $depbase.Tpo -c -o src/datacache.o src/datacache.c &&\
-mv -f $depbase.Tpo $depbase.Po
-depbase=`echo src/daemon.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
-gcc -DHAVE_CONFIG_H -I. -I./src     -g -O2 -I/usr/local/include -MT src/daemon.o -MD -MP -MF $depbase.Tpo -c -o src/daemon.o src/daemon.c &&\
-mv -f $depbase.Tpo $depbase.Po
-src/daemon.c: In function ‘datacache_status’:
-src/daemon.c:825:54: warning: ‘ Mbit) ’ directive output may be truncated writing 7 bytes into a region of size between 4 and 13 [-Wformat-truncation=]
-  825 |                                 snprintf(bwtemp, 16, " (%" PRIu32 " Mbit) ", bwlimit);
-      |                                                      ^~~~~
-src/daemon.c:825:68: note: format string is defined here
-  825 |                                 snprintf(bwtemp, 16, " (%" PRIu32 " Mbit) ", bwlimit);
-      |                                                                    ^~~~~~~
-In file included from /usr/include/stdio.h:894,
-                 from src/common.h:5,
-                 from src/daemon.c:1:
-/usr/include/x86_64-linux-gnu/bits/stdio2.h:71:10: note: ‘__builtin___snprintf_chk’ output between 11 and 20 bytes into a destination of size 16
-   71 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
-      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   72 |                                    __glibc_objsize (__s), __fmt,
-      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   73 |                                    __va_arg_pack ());
-      |                                    ~~~~~~~~~~~~~~~~~
-gcc  -g -O2 -I/usr/local/include  -L/usr/local/lib -o vnstatd src/vnstatd.o src/ifinfo.o src/iflist.o src/dbsql.o src/dbaccess.o src/datacache.o src/common.o src/misc.o src/cfg.o src/ibw.o src/fs.o src/id.o src/daemon.o  -lsqlite3 -lm 
-make[1]: Leaving directory '/root/vnstat-2.6'
-Making install in .
-make[1]: Entering directory '/root/vnstat-2.6'
-make[2]: Entering directory '/root/vnstat-2.6'
- /usr/bin/mkdir -p '/usr/bin'
-  /usr/bin/install -c vnstat '/usr/bin'
- /usr/bin/mkdir -p '/usr/sbin'
-  /usr/bin/install -c vnstatd '/usr/sbin'
- /usr/bin/mkdir -p '/usr/share/man/man1'
- /usr/bin/install -c -m 644 man/vnstat.1 man/vnstati.1 '/usr/share/man/man1'
- /usr/bin/mkdir -p '/usr/share/man/man5'
- /usr/bin/install -c -m 644 man/vnstat.conf.5 '/usr/share/man/man5'
- /usr/bin/mkdir -p '/usr/share/man/man8'
- /usr/bin/install -c -m 644 man/vnstatd.8 '/usr/share/man/man8'
-make  install-data-hook
-make[3]: Entering directory '/root/vnstat-2.6'
-Making install-exec in .
-make[4]: Entering directory '/root/vnstat-2.6'
- /usr/bin/mkdir -p '/usr/bin'
-  /usr/bin/install -c vnstat '/usr/bin'
- /usr/bin/mkdir -p '/usr/sbin'
-  /usr/bin/install -c vnstatd '/usr/sbin'
-make[4]: Leaving directory '/root/vnstat-2.6'
-if [ -f /usr/share/man/man1/vnstatd.1 ]; then rm -f /usr/share/man/man1/vnstatd.1; fi
-/usr/bin/mkdir -p /etc
-/usr/bin/vnstat --showconfig >vnstat.conf.new
-if [ -f /etc/vnstat.conf ]; \
-then cp -fv /etc/vnstat.conf vnstat.conf.old; \
-fi
-'/etc/vnstat.conf' -> 'vnstat.conf.old'
-cp -fv vnstat.conf.new /etc/vnstat.conf
-'vnstat.conf.new' -> '/etc/vnstat.conf'
-
-============================================================================
-  Note: No service file has been installed for starting the daemon
-        automatically. Such setup will need to be created manually
-        depending on the used environment. See the included documentation.
-============================================================================
-
-make[3]: Leaving directory '/root/vnstat-2.6'
-make[2]: Leaving directory '/root/vnstat-2.6'
-make[1]: Leaving directory '/root/vnstat-2.6'
-Synchronizing state of vnstat.service with SysV service script with /lib/systemd/systemd-sysv-install.
-Executing: /lib/systemd/systemd-sysv-install enable vnstat
-Restarting vnstat (via systemctl): vnstat.service.
-● vnstat.service - vnStat network traffic monitor
-     Loaded: loaded (/lib/systemd/system/vnstat.service; enabled; vendor preset: enabled)
-     Active: active (running) since Tue 2025-10-14 17:35:02 WIB; 33ms ago
-       Docs: man:vnstatd(8)
-             man:vnstat(1)
-             man:vnstat.conf(5)
-   Main PID: 13086 ((vnstatd))
-      Tasks: 1 (limit: 4652)
-     Memory: 364.0K
-        CPU: 27ms
-     CGroup: /system.slice/vnstat.service
-             └─13086 "(vnstatd)"
-
-Oct 14 17:35:02 ubuntu systemd[1]: Started vnStat network traffic monitor.
-    [OK] Vnstat
-[15/24] Menginstall OpenVPN
---2025-10-14 17:35:02--  https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/files/openvpn
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.109.133, 185.199.111.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 7564 (7.4K) [text/plain]
-Saving to: ‘openvpn’
-
-     0K .......                                               100% 22.1M=0s
-
-2025-10-14 17:35:03 (22.1 MB/s) - ‘openvpn’ saved [7564/7564]
-
-Archive:  /etc/openvpn/vpn.zip
-   creating: /etc/openvpn/server/
-  inflating: /etc/openvpn/server/dh2048.pem.txt  
-  inflating: /etc/openvpn/server/tc.key  
-  inflating: /etc/openvpn/server/server-tcp.conf  
-  inflating: /etc/openvpn/server/server-udp.conf  
-  inflating: /etc/openvpn/server/openvpn-status.log  
-  inflating: /etc/openvpn/server/ca.crt.bckp  
-  inflating: /etc/openvpn/server/dh2048.pem  
-  inflating: /etc/openvpn/server/dh.pem  
-  inflating: /etc/openvpn/server/crl.pem  
-  inflating: /etc/openvpn/server/ca.key  
-  inflating: /etc/openvpn/server/ca.crt  
-  inflating: /etc/openvpn/server/server.key  
-  inflating: /etc/openvpn/server/server.crt  
-  inflating: /etc/openvpn/server/ipp.txt  
-  inflating: /etc/openvpn/server/openvpn-tcp.log  
-  inflating: /etc/openvpn/server/openvpn-udp.log  
-   creating: /etc/openvpn/server/easy-rsa/
-  inflating: /etc/openvpn/server/easy-rsa/vars.example  
-  inflating: /etc/openvpn/server/easy-rsa/README.quickstart.md  
-  inflating: /etc/openvpn/server/easy-rsa/README.md  
-  inflating: /etc/openvpn/server/easy-rsa/openssl-easyrsa.cnf  
-  inflating: /etc/openvpn/server/easy-rsa/mktemp.txt  
-  inflating: /etc/openvpn/server/easy-rsa/gpl-2.0.txt  
-  inflating: /etc/openvpn/server/easy-rsa/easyrsa  
-  inflating: /etc/openvpn/server/easy-rsa/COPYING.md  
-  inflating: /etc/openvpn/server/easy-rsa/ChangeLog  
-   creating: /etc/openvpn/server/easy-rsa/doc/
-  inflating: /etc/openvpn/server/easy-rsa/doc/Intro-To-PKI.md  
-  inflating: /etc/openvpn/server/easy-rsa/doc/Hacking.md  
-  inflating: /etc/openvpn/server/easy-rsa/doc/EasyRSA-Upgrade-Notes.md  
-  inflating: /etc/openvpn/server/easy-rsa/doc/EasyRSA-Readme.md  
-  inflating: /etc/openvpn/server/easy-rsa/doc/EasyRSA-Advanced.md  
-   creating: /etc/openvpn/server/easy-rsa/x509-types/
-  inflating: /etc/openvpn/server/easy-rsa/x509-types/serverClient  
-  inflating: /etc/openvpn/server/easy-rsa/x509-types/server  
-  inflating: /etc/openvpn/server/easy-rsa/x509-types/kdc  
-  inflating: /etc/openvpn/server/easy-rsa/x509-types/email  
-  inflating: /etc/openvpn/server/easy-rsa/x509-types/COMMON  
-  inflating: /etc/openvpn/server/easy-rsa/x509-types/code-signing  
-  inflating: /etc/openvpn/server/easy-rsa/x509-types/client  
-  inflating: /etc/openvpn/server/easy-rsa/x509-types/ca  
-   creating: /etc/openvpn/server/easy-rsa/pki/
-  inflating: /etc/openvpn/server/easy-rsa/pki/safessl-easyrsa.cnf  
-  inflating: /etc/openvpn/server/easy-rsa/pki/openssl-easyrsa.cnf  
-  inflating: /etc/openvpn/server/easy-rsa/pki/index.txt.old  
-  inflating: /etc/openvpn/server/easy-rsa/pki/index.txt.attr.old  
-  inflating: /etc/openvpn/server/easy-rsa/pki/ca.crt  
-  inflating: /etc/openvpn/server/easy-rsa/pki/serial.old  
-  inflating: /etc/openvpn/server/easy-rsa/pki/serial  
-  inflating: /etc/openvpn/server/easy-rsa/pki/index.txt.attr  
-  inflating: /etc/openvpn/server/easy-rsa/pki/index.txt  
-   creating: /etc/openvpn/server/easy-rsa/pki/revoked/
-   creating: /etc/openvpn/server/easy-rsa/pki/revoked/reqs_by_serial/
-   creating: /etc/openvpn/server/easy-rsa/pki/revoked/private_by_serial/
-   creating: /etc/openvpn/server/easy-rsa/pki/revoked/certs_by_serial/
-   creating: /etc/openvpn/server/easy-rsa/pki/renewed/
-   creating: /etc/openvpn/server/easy-rsa/pki/renewed/reqs_by_serial/
-   creating: /etc/openvpn/server/easy-rsa/pki/renewed/private_by_serial/
-   creating: /etc/openvpn/server/easy-rsa/pki/renewed/certs_by_serial/
-   creating: /etc/openvpn/server/easy-rsa/pki/reqs/
-  inflating: /etc/openvpn/server/easy-rsa/pki/reqs/server.req  
-   creating: /etc/openvpn/server/easy-rsa/pki/private/
-  inflating: /etc/openvpn/server/easy-rsa/pki/private/ca.key  
-  inflating: /etc/openvpn/server/easy-rsa/pki/private/server.key  
-   creating: /etc/openvpn/server/easy-rsa/pki/issued/
-  inflating: /etc/openvpn/server/easy-rsa/pki/issued/server.crt  
-   creating: /etc/openvpn/server/easy-rsa/pki/certs_by_serial/
-  inflating: /etc/openvpn/server/easy-rsa/pki/certs_by_serial/5253228399FEE76FC8F8F6280352027E.pem  
-cp: '/usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so' and '/usr/lib/openvpn/openvpn-plugin-auth-pam.so' are the same file
-Restarting openvpn (via systemctl): openvpn.service.
-    [OK] OpenVPN
-[16/24] Memasang Backup Server
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following NEW packages will be installed:
-  rclone
-0 upgraded, 1 newly installed, 0 to remove and 8 not upgraded.
-Need to get 11.7 MB of archives.
-After this operation, 42.6 MB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 rclone amd64 1.53.3-4ubuntu1.22.04.3 [11.7 MB]
-Fetched 11.7 MB in 3s (3416 kB/s)
-Selecting previously unselected package rclone.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 41968 files and directories currently installed.)
-Preparing to unpack .../rclone_1.53.3-4ubuntu1.22.04.3_amd64.deb ...
-Unpacking rclone (1.53.3-4ubuntu1.22.04.3) ...
-Setting up rclone (1.53.3-4ubuntu1.22.04.3) ...
-Processing triggers for man-db (2.10.2-1) ...
-
-Running kernel seems to be up-to-date.
-
-No services need to be restarted.
-
-No containers need to be restarted.
-
-No user sessions are running outdated binaries.
-
-No VM guests are running outdated hypervisor (qemu) binaries on this host.
-2025/10/14 17:35:30 NOTICE: Config file "/root/.config/rclone/rclone.conf" not found - using defaults
-No remotes found - make a new one
-n) New remote
-s) Set configuration password
-q) Quit config
-n/s/q>     [INFO] Konfigurasi rclone default dibuat secara lokal
-Cloning into 'wondershaper'...
-install -Dm755 wondershaper /usr/local/sbin/wondershaper;
-install -Dm644 wondershaper.service /usr/local/lib/systemd/system/wondershaper.service;
-install -Dm644 wondershaper.conf /etc/systemd/wondershaper.conf;
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Reading package lists...
-Building dependency tree...
-Reading state information...
-ca-certificates is already the newest version (20240203~22.04.1).
-ca-certificates set to manually installed.
-The following additional packages will be installed:
-  gsasl-common libgsasl7 libidn12 liblockfile-bin liblockfile1 libntlm0
-  libsecret-1-0 libsecret-common libsecret-tools msmtp
-The following NEW packages will be installed:
-  bsd-mailx gsasl-common libgsasl7 libidn12 liblockfile-bin liblockfile1
-  libntlm0 libsecret-1-0 libsecret-common libsecret-tools msmtp msmtp-mta
-0 upgraded, 12 newly installed, 0 to remove and 8 not upgraded.
-Need to get 668 kB of archives.
-After this operation, 2454 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu jammy/universe amd64 gsasl-common all 1.10.0-5 [59.8 kB]
-Get:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libidn12 amd64 1.38-4ubuntu1 [60.0 kB]
-Get:3 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libntlm0 amd64 1.6-4 [73.7 kB]
-Get:4 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libgsasl7 amd64 1.10.0-5 [71.1 kB]
-Get:5 http://archive.ubuntu.com/ubuntu jammy/main amd64 libsecret-common all 0.20.5-2 [4278 B]
-Get:6 http://archive.ubuntu.com/ubuntu jammy/main amd64 libsecret-1-0 amd64 0.20.5-2 [124 kB]
-Get:7 http://archive.ubuntu.com/ubuntu jammy/universe amd64 msmtp amd64 1.8.16-1 [161 kB]
-Get:8 http://archive.ubuntu.com/ubuntu jammy/universe amd64 msmtp-mta amd64 1.8.16-1 [13.4 kB]
-Get:9 http://archive.ubuntu.com/ubuntu jammy/main amd64 liblockfile-bin amd64 1.17-1build2 [11.7 kB]
-Get:10 http://archive.ubuntu.com/ubuntu jammy/main amd64 liblockfile1 amd64 1.17-1build2 [7058 B]
-Get:11 http://archive.ubuntu.com/ubuntu jammy/main amd64 bsd-mailx amd64 8.1.2-0.20180807cvs-2build2 [69.6 kB]
-Get:12 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libsecret-tools amd64 0.20.5-2 [11.7 kB]
-Preconfiguring packages ...
-Fetched 668 kB in 2s (305 kB/s)
-Selecting previously unselected package gsasl-common.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 41978 files and directories currently installed.)
-Preparing to unpack .../00-gsasl-common_1.10.0-5_all.deb ...
-Unpacking gsasl-common (1.10.0-5) ...
-Selecting previously unselected package libidn12:amd64.
-Preparing to unpack .../01-libidn12_1.38-4ubuntu1_amd64.deb ...
-Unpacking libidn12:amd64 (1.38-4ubuntu1) ...
-Selecting previously unselected package libntlm0:amd64.
-Preparing to unpack .../02-libntlm0_1.6-4_amd64.deb ...
-Unpacking libntlm0:amd64 (1.6-4) ...
-Selecting previously unselected package libgsasl7:amd64.
-Preparing to unpack .../03-libgsasl7_1.10.0-5_amd64.deb ...
-Unpacking libgsasl7:amd64 (1.10.0-5) ...
-Selecting previously unselected package libsecret-common.
-Preparing to unpack .../04-libsecret-common_0.20.5-2_all.deb ...
-Unpacking libsecret-common (0.20.5-2) ...
-Selecting previously unselected package libsecret-1-0:amd64.
-Preparing to unpack .../05-libsecret-1-0_0.20.5-2_amd64.deb ...
-Unpacking libsecret-1-0:amd64 (0.20.5-2) ...
-Selecting previously unselected package msmtp.
-Preparing to unpack .../06-msmtp_1.8.16-1_amd64.deb ...
-Unpacking msmtp (1.8.16-1) ...
-Selecting previously unselected package msmtp-mta.
-Preparing to unpack .../07-msmtp-mta_1.8.16-1_amd64.deb ...
-Unpacking msmtp-mta (1.8.16-1) ...
-Selecting previously unselected package liblockfile-bin.
-Preparing to unpack .../08-liblockfile-bin_1.17-1build2_amd64.deb ...
-Unpacking liblockfile-bin (1.17-1build2) ...
-Selecting previously unselected package liblockfile1:amd64.
-Preparing to unpack .../09-liblockfile1_1.17-1build2_amd64.deb ...
-Unpacking liblockfile1:amd64 (1.17-1build2) ...
-Selecting previously unselected package bsd-mailx.
-Preparing to unpack .../10-bsd-mailx_8.1.2-0.20180807cvs-2build2_amd64.deb ...
-Unpacking bsd-mailx (8.1.2-0.20180807cvs-2build2) ...
-Selecting previously unselected package libsecret-tools.
-Preparing to unpack .../11-libsecret-tools_0.20.5-2_amd64.deb ...
-Unpacking libsecret-tools (0.20.5-2) ...
-Setting up liblockfile-bin (1.17-1build2) ...
-Setting up libntlm0:amd64 (1.6-4) ...
-Setting up libidn12:amd64 (1.38-4ubuntu1) ...
-Setting up liblockfile1:amd64 (1.17-1build2) ...
-Setting up gsasl-common (1.10.0-5) ...
-Setting up libsecret-common (0.20.5-2) ...
-Setting up libgsasl7:amd64 (1.10.0-5) ...
-Setting up libsecret-1-0:amd64 (0.20.5-2) ...
-Setting up libsecret-tools (0.20.5-2) ...
-Setting up msmtp (1.8.16-1) ...
-Setting up msmtp-mta (1.8.16-1) ...
-msmtpd.service is a disabled or a static unit, not starting it.
-Setting up bsd-mailx (8.1.2-0.20180807cvs-2build2) ...
-update-alternatives: using /usr/bin/bsd-mailx to provide /usr/bin/mailx (mailx) in auto mode
-Processing triggers for libc-bin (2.35-0ubuntu3.11) ...
-Processing triggers for man-db (2.10.2-1) ...
-Processing triggers for install-info (6.8-4build1) ...
-
-Running kernel seems to be up-to-date.
-
-No services need to be restarted.
-
-No containers need to be restarted.
-
-No user sessions are running outdated binaries.
-
-No VM guests are running outdated hypervisor (qemu) binaries on this host.
-run-parts: executing /usr/share/netfilter-persistent/plugins.d/15-ip4tables start
-run-parts: executing /usr/share/netfilter-persistent/plugins.d/25-ip6tables start
-    [OK] Backup Server
-[17/24] Memasang Swap 1 G
-1048576+0 records in
-1048576+0 records out
-1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.09162 s, 262 MB/s
-mkswap: /swapfile: insecure permissions 0644, fix with: chmod 0600 /swapfile
-Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
-no label, UUID=4e322eeb-7d2d-41e7-b87f-8d02349c6fdf
-setup.sh: line 772: chronyd: command not found
-setup.sh: line 773: chronyc: command not found
-setup.sh: line 774: chronyc: command not found
---2025-10-14 17:35:47--  https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/files/bbr.sh
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.111.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 9696 (9.5K) [text/plain]
-Saving to: ‘bbr.sh’
-
-     0K .........                                             100% 39.5M=0s
-
-2025-10-14 17:35:47 (39.5 MB/s) - ‘bbr.sh’ saved [9696/9696]
-
-[H[2J[3J
-
-Installing TCP BBR
-Please Wait BBR Installation Will Starting . . .
-[H[2J[3J[32;1m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m
-[32;1mInstalling TCP BBR...[0m
-[0;32mStarting To Install BBR...[0m
-net.ipv4.ip_forward = 1
-net.core.default_qdisc = fq
-net.ipv4.tcp_congestion_control = bbr
-[0;32mTCP BBR Install Success![0m
-[32;1m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m
-[32;1m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m
-[32;1mOptimize Parameters...[0m
-[0;32mSuccesfully Optimize Parameters.[0m
-[32;1m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m
-[32;1m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m
-[0;32m       Installation Success!       [0m
-[32;1m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m
-    [OK] Swap 1 G
-[18/24] Menginstall Fail2ban
---2025-10-14 17:36:04--  https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/files/issue.net
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.109.133, 185.199.108.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 1092 (1.1K) [text/plain]
-Saving to: ‘/etc/kyt.txt’
-
-     0K .                                                     100% 97.0M=0s
-
-2025-10-14 17:36:04 (97.0 MB/s) - ‘/etc/kyt.txt’ saved [1092/1092]
-
-    [OK] Fail2ban
-[19/24] Menginstall ePro WebSocket Proxy
-Created symlink /etc/systemd/system/multi-user.target.wants/ws.service → /etc/systemd/system/ws.service.
-    [OK] ePro WebSocket Proxy
-[20/24] Restarting  All Packet
-Restarting nginx (via systemctl): nginx.service.
-Restarting openvpn (via systemctl): openvpn.service.
-Restarting ssh (via systemctl): ssh.service.
-Restarting dropbear (via systemctl): dropbear.service.
-Restarting vnstat (via systemctl): vnstat.service.
-Restarting cron (via systemctl): cron.service.
-Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
-Executing: /lib/systemd/systemd-sysv-install enable nginx
-dropbear.service is not a native service, redirecting to systemd-sysv-install.
-Executing: /lib/systemd/systemd-sysv-install enable dropbear
-Synchronizing state of openvpn.service with SysV service script with /lib/systemd/systemd-sysv-install.
-Executing: /lib/systemd/systemd-sysv-install enable openvpn
-Synchronizing state of cron.service with SysV service script with /lib/systemd/systemd-sysv-install.
-Executing: /lib/systemd/systemd-sysv-install enable cron
-Synchronizing state of haproxy.service with SysV service script with /lib/systemd/systemd-sysv-install.
-Executing: /lib/systemd/systemd-sysv-install enable haproxy
-    [OK] All Packet
-[21/24] Memasang Menu Packet
---2025-10-14 17:36:19--  https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/menu/menu.zip
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.110.133, 185.199.108.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 1014926 (991K) [application/zip]
-Saving to: ‘menu.zip’
-
-     0K .......... .......... .......... .......... ..........  5% 85.2M 0s
-    50K .......... .......... .......... .......... .......... 10% 93.0M 0s
-   100K .......... .......... .......... .......... .......... 15%  130M 0s
-   150K .......... .......... .......... .......... .......... 20%  181M 0s
-   200K .......... .......... .......... .......... .......... 25%  144M 0s
-   250K .......... .......... .......... .......... .......... 30%  192M 0s
-   300K .......... .......... .......... .......... .......... 35%  185M 0s
-   350K .......... .......... .......... .......... .......... 40%  168M 0s
-   400K .......... .......... .......... .......... .......... 45%  109M 0s
-   450K .......... .......... .......... .......... .......... 50%  151M 0s
-   500K .......... .......... .......... .......... .......... 55%  130M 0s
-   550K .......... .......... .......... .......... .......... 60%  153M 0s
-   600K .......... .......... .......... .......... .......... 65%  172M 0s
-   650K .......... .......... .......... .......... .......... 70%  208M 0s
-   700K .......... .......... .......... .......... .......... 75%  166M 0s
-   750K .......... .......... .......... .......... .......... 80%  203M 0s
-   800K .......... .......... .......... .......... .......... 85%  179M 0s
-   850K .......... .......... .......... .......... .......... 90%  207M 0s
-   900K .......... .......... .......... .......... .......... 95%  191M 0s
-   950K .......... .......... .......... .......... .         100%  182M=0.006s
-
-2025-10-14 17:36:19 (151 MB/s) - ‘menu.zip’ saved [1014926/1014926]
-
-Archive:  menu.zip
-   creating: menu/
-  inflating: menu/add-bot-notif      
-  inflating: menu/addhost            
-  inflating: menu/addss              
-  inflating: menu/addssh             
-  inflating: menu/addtr              
-  inflating: menu/addvless           
-  inflating: menu/addws              
-  inflating: menu/autokill           
-  inflating: menu/autoreboot         
-  inflating: menu/backup             
-  inflating: menu/bot                
-  inflating: menu/bw                 
-  inflating: menu/ceklim             
-  inflating: menu/cekss              
-  inflating: menu/cekssh             
-  inflating: menu/cektr              
-  inflating: menu/cekvless           
-  inflating: menu/cekws              
-  inflating: menu/clearcache         
-  inflating: menu/clearlog           
-  inflating: menu/del-bot-notif      
-  inflating: menu/delexp             
-  inflating: menu/delss              
-  inflating: menu/delssh             
-  inflating: menu/deltr              
-  inflating: menu/delvless           
-  inflating: menu/delws              
-  inflating: menu/fixcert            
-  inflating: menu/hapus-bot          
-  inflating: menu/jam                
-  inflating: menu/limitspeed         
-  inflating: menu/lock               
-  inflating: menu/m-bot              
-  inflating: menu/m-sshws            
-  inflating: menu/m-ssws             
-  inflating: menu/m-system           
-  inflating: menu/m-trial            
-  inflating: menu/m-trojan           
-  inflating: menu/m-vless            
-  inflating: menu/m-vmess            
-  inflating: menu/mbot-backup        
-  inflating: menu/mbot-panel         
-  inflating: menu/member             
-  inflating: menu/menu               
-  inflating: menu/menu-backup        
-  inflating: menu/prot               
-  inflating: menu/renewss            
-  inflating: menu/renewssh           
-  inflating: menu/renewtr            
-  inflating: menu/renewvless         
-  inflating: menu/renewws            
-  inflating: menu/reset              
-  inflating: menu/restart            
-  inflating: menu/restart-bot        
-  inflating: menu/restore            
-  inflating: menu/run                
-  inflating: menu/sd                 
-  inflating: menu/speedtest          
-  inflating: menu/stop-bot           
-  inflating: menu/tendang            
-  inflating: menu/trial              
-  inflating: menu/trialss            
-  inflating: menu/trialtr            
-  inflating: menu/trialvless         
-  inflating: menu/trialws            
-  inflating: menu/tunnel             
-  inflating: menu/unlock             
-  inflating: menu/xp                 
-[22/24] Menyiapkan profil shell dan jadwal otomatis
-    [OK] Profil shell dan jadwal otomatis
-[23/24] Enable Service
-Synchronizing state of cron.service with SysV service script with /lib/systemd/systemd-sysv-install.
-Executing: /lib/systemd/systemd-sysv-install enable cron
-    [OK] Enable Service
-[24/24] Menampilkan ringkasan instalasi
-    Domain aktif       : p8oy1p.capzsmodzs.biz.id
-    IP publik          : 209.97.168.176
-    Folder web         : /var/www/html
-    Konfigurasi Xray   : /etc/xray/config.json
-    Cert & Key         : /etc/xray/xray.crt /etc/xray/xray.key
-    Status layanan     :
-        - nginx        : RUNNING
-        - xray         : RUNNING
-        - haproxy      : RUNNING
-        - dropbear     : RUNNING
-        - openvpn      : RUNNING
-        - ws           : RUNNING
-[32mloading...[0m
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   102  100   102    0     0    310      0 --:--:-- --:--:-- --:--:--   310
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   102  100   102    0     0   2006      0 --:--:-- --:--:-- --:--:--  2040
-
-00:04:27
- Script Successfull Installed
-
-Press [ Enter ] For reboot 

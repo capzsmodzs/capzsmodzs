@@ -1,19 +1,7 @@
 #!/bin/bash
-Green="\e[92;1m"
-RED="\033[31m"
-YELLOW="\033[33m"
-BLUE="\033[36m"
-FONT="\033[0m"
-GREENBG="\033[42;37m"
-REDBG="\033[41;37m"
-GRAY="\e[1;30m"
-NC='\e[0m'
-red='\e[1;31m'
-green='\e[0;32m'
-CYAN='\033[96m'
-MAGENTA='\033[35m'
-WHITE='\033[97m'
-grenbo="\e[92;1m"
+GREEN="\033[1;32m"
+RED="\033[1;31m"
+RESET="\033[0m"
 REPO="https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/"
 start=$(date +%s)
 TOTAL_STEPS=24
@@ -23,45 +11,44 @@ USE_COLOR=1
 if [[ ! -t 1 || ${NO_COLOR:-0} == 1 ]]; then
     USE_COLOR=0
 fi
-
 if (( USE_COLOR == 0 )); then
-    Green=""; RED=""; YELLOW=""; BLUE=""; FONT=""; GREENBG=""; REDBG=""
-    GRAY=""; NC=""; red=""; green=""; CYAN=""; MAGENTA=""; WHITE=""; grenbo=""
+    GREEN=""
+    RED=""
+    RESET=""
 fi
-COLOR1="${grenbo}"
-OK="${Green}  »${FONT}"
-ERROR="${RED}[ERROR]${FONT}"
-LABEL_OK="${green}[OK]${NC}"
-LABEL_ERR="${RED}[ERR]${NC}"
-LABEL_INFO="${CYAN}[INFO]${NC}"
 
-if (( USE_COLOR == 0 )); then
-    OK="  »"
-    ERROR="[ERROR]"
-    LABEL_OK="[OK]"
-    LABEL_ERR="[ERR]"
-    LABEL_INFO="[INFO]"
-fi
 
 print_install() {
     CURRENT_STEP=$((CURRENT_STEP + 1))
     if (( USE_COLOR )); then
-        printf "%b[%02d/%02d]%b %s\n" "${YELLOW}" "${CURRENT_STEP}" "${TOTAL_STEPS}" "${NC}" "$1"
+        printf "%s[%02d/%02d] %s%s\n" "$GREEN" "${CURRENT_STEP}" "${TOTAL_STEPS}" "$1" "$RESET"
     else
         printf "[%02d/%02d] %s\n" "${CURRENT_STEP}" "${TOTAL_STEPS}" "$1"
     fi
 }
 
 print_success() {
-    printf "    %s %s\n" "${LABEL_OK}" "$1"
+    if (( USE_COLOR )); then
+        printf "    %s[OK] %s%s\n" "$GREEN" "$1" "$RESET"
+    else
+        printf "    [OK] %s\n" "$1"
+    fi
 }
 
 print_error() {
-    printf "    %s %s\n" "${LABEL_ERR}" "$1"
+    if (( USE_COLOR )); then
+        printf "    %s[ERR] %s%s\n" "$RED" "$1" "$RESET"
+    else
+        printf "    [ERR] %s\n" "$1"
+    fi
 }
 
 print_ok() {
-    printf "    %s %s\n" "${LABEL_INFO}" "$1"
+    if (( USE_COLOR )); then
+        printf "    %s[INFO] %s%s\n" "$GREEN" "$1" "$RESET"
+    else
+        printf "    [INFO] %s\n" "$1"
+    fi
 }
 
 secs_to_human() {
@@ -115,7 +102,22 @@ function show_intro_banner() {
     fi
     local os_name
     os_name=$(awk -F= '/^PRETTY_NAME=/{gsub(/"/,"",$2);print $2}' /etc/os-release)
-    if [[ ${NO_COLOR:-0} == 1 ]]; then
+    if (( USE_COLOR )); then
+        printf "%s%s%s\n" "$GREEN" "capzsmodzs Premium Installer" "$RESET"
+        printf "%s%s%s\n" "$GREEN" "------------------------------------------------------------" "$RESET"
+        printf "%sDeveloper       : capzsmodzs%s\n" "$GREEN" "$RESET"
+        printf "%sEdition         : Premium%s\n" "$GREEN" "$RESET"
+        printf "%sMaintainer      : capzsmodzs%s\n" "$GREEN" "$RESET"
+        printf "%s------------------------------------------------------------%s\n" "$GREEN" "$RESET"
+        printf "%sArchitecture    : %s%s\n" "$GREEN" "$(uname -m)" "$RESET"
+        printf "%sOperating System: %s%s\n" "$GREEN" "$os_name" "$RESET"
+        if [[ -n $current_ip ]]; then
+            printf "%sPublic IP       : %s%s\n" "$GREEN" "$current_ip" "$RESET"
+        else
+            printf "%sPublic IP       : %s%s\n" "$RED" "Unknown" "$RESET"
+        fi
+        printf "%sPress Enter to start installation:%s " "$GREEN" "$RESET"
+    else
         echo "capzsmodzs Premium Installer"
         echo "------------------------------------------------------------"
         printf "  %-15s : %s\n" "Developer" "capzsmodzs"
@@ -125,26 +127,7 @@ function show_intro_banner() {
         printf "  %-15s : %s\n" "Architecture" "$(uname -m)"
         printf "  %-15s : %s\n" "Operating System" "$os_name"
         printf "  %-15s : %s\n" "Public IP" "${current_ip:-Unknown}"
-    else
-        printf "%b\n" "${YELLOW}capzsmodzs Premium Installer${NC}"
-        printf "%b\n" "${GRAY}------------------------------------------------------------${NC}"
-        printf "  %-15s : %b%s%b\n" "Developer" "${green}" "capzsmodzs" "${NC}"
-        printf "  %-15s : %b%s%b\n" "Edition" "${WHITE}" "Premium" "${NC}"
-        printf "  %-15s : %b%s%b\n" "Maintainer" "${WHITE}" "capzsmodzs" "${NC}"
-        printf "%b\n" "${GRAY}------------------------------------------------------------${NC}"
-        printf "  %-15s : %b%s%b\n" "Architecture" "${green}" "$(uname -m)" "${NC}"
-        printf "  %-15s : %b%s%b\n" "Operating System" "${green}" "$os_name" "${NC}"
-        if [[ -n $current_ip ]]; then
-            printf "  %-15s : %b%s%b\n" "Public IP" "${green}" "$current_ip" "${NC}"
-        else
-            printf "  %-15s : %b%s%b\n" "Public IP" "${RED}" "Unknown" "${NC}"
-        fi
-    fi
-    echo
-    if [[ ${NO_COLOR:-0} == 1 || ! -t 1 ]]; then
         printf "Press Enter to start installation: "
-    else
-        printf "Press %bEnter%b to start installation: " "${green}" "${NC}"
     fi
     read -r
     echo
@@ -152,7 +135,7 @@ function show_intro_banner() {
 function validate_system() {
     local arch=$(uname -m)
     if [[ ${arch} != "x86_64" ]]; then
-        echo -e "${REDBG} Architecture ${arch} tidak didukung. Gunakan server x86_64.${NC}"
+        print_error "Architecture ${arch} tidak didukung. Gunakan server x86_64."
         exit 1
     fi
 
@@ -160,12 +143,12 @@ function validate_system() {
     os_id=$(awk -F= '/^ID=/{gsub(/"/,"",$2);print $2}' /etc/os-release)
     if [[ ${os_id} != "ubuntu" && ${os_id} != "debian" ]]; then
         local os_name=$(awk -F= '/^PRETTY_NAME=/{gsub(/"/,"",$2);print $2}' /etc/os-release)
-        echo -e "${REDBG} OS ${os_name} tidak didukung oleh script ini.${NC}"
+        print_error "OS ${os_name} tidak didukung oleh script ini."
         exit 1
     fi
 
     if [[ -z ${IP} ]]; then
-        echo -e "${REDBG} IP publik tidak terdeteksi. Pastikan VPS memiliki koneksi internet.${NC}"
+        print_error "IP publik tidak terdeteksi. Pastikan VPS memiliki koneksi internet."
         exit 1
     fi
 }
@@ -285,8 +268,10 @@ function first_setup() {
     os_id=$(awk -F= '/^ID=/{gsub(/"/,""); print $2}' /etc/os-release)
     local version_id
     version_id=$(awk -F= '/^VERSION_ID=/{gsub(/"/,""); print $2}' /etc/os-release)
+    local os_pretty
+    os_pretty=$(awk -F= '/^PRETTY_NAME=/{gsub(/"/,""); print $2}' /etc/os-release)
     if [[ ${os_id} == "ubuntu" ]]; then
-        echo "Setup Dependencies $(awk -F= '/^PRETTY_NAME=/{gsub(/"/,""); print $2}' /etc/os-release)"
+        print_ok "Setup Dependencies ${os_pretty}"
         sudo apt update -y
         apt-get install --no-install-recommends software-properties-common
         if dpkg --compare-versions "${version_id}" lt "22.04"; then
@@ -296,7 +281,7 @@ function first_setup() {
             apt-get -y install haproxy
         fi
     elif [[ ${os_id} == "debian" ]]; then
-        echo "Setup Dependencies For OS Is $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')"
+        print_ok "Setup Dependencies Untuk ${os_pretty}"
         curl https://haproxy.debian.net/bernat.debian.org.gpg |
             gpg --dearmor >/usr/share/keyrings/haproxy.debian.net.gpg
         echo deb "[signed-by=/usr/share/keyrings/haproxy.debian.net.gpg]" \
@@ -305,7 +290,7 @@ function first_setup() {
         sudo apt-get update
         apt-get -y install haproxy=1.8.\*
     else
-        echo -e " Your OS Is Not Supported ($(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g') )"
+        print_error "Your OS is not supported (${os_pretty})."
         exit 1
     fi
 }
@@ -321,8 +306,7 @@ function nginx_install() {
         print_success "Setup nginx For OS Is $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')"
         apt -y install nginx
     else
-        echo -e " Your OS Is Not Supported ( ${YELLOW}$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')${FONT} )"
-        # // exit 1
+        print_error "OS tidak didukung untuk instalasi nginx otomatis."
     fi
 }
 
@@ -400,7 +384,11 @@ function password_default() {
 restart_system() {
     #IZIN SCRIPT
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    echo -e "\e[32mloading...\e[0m"
+    if (( USE_COLOR )); then
+        printf "%sloading...%s\n" "$GREEN" "$RESET"
+    else
+        echo "loading..."
+    fi
     izinsc="https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/register"
     # USERNAME
     rm -f /usr/bin/user
@@ -422,8 +410,13 @@ restart_system() {
     valid="$exp"
     ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10)
     # Status Expired Active
-    Info="(${green}Active${NC})"
-    Error="(${RED}ExpiRED${NC})"
+    if (( USE_COLOR )); then
+        Info="(${GREEN}Active${RESET})"
+        Error="(${RED}Expired${RESET})"
+    else
+        Info="(Active)"
+        Error="(Expired)"
+    fi
     if [[ -n $valid && "$today" < "$valid" ]]; then
         sts="${Info}"
     else
@@ -1013,18 +1006,35 @@ function show_summary() {
         domain=$(cat /etc/xray/domain)
     fi
     local public_ip="${IP:-$(get_public_ip || echo "-")}"
-    printf "    %-18s : %s\n" "Domain aktif" "$domain"
-    printf "    %-18s : %s\n" "IP publik" "$public_ip"
-    printf "    %-18s : %s\n" "Folder web" "/var/www/html"
-    printf "    %-18s : %s\n" "Konfigurasi Xray" "/etc/xray/config.json"
-    printf "    %-18s : %s\n" "Cert & Key" "/etc/xray/xray.crt /etc/xray/xray.key"
+    if (( USE_COLOR )); then
+        printf "    %s%-18s : %s%s\n" "$GREEN" "Domain aktif" "$domain" "$RESET"
+        printf "    %s%-18s : %s%s\n" "$GREEN" "IP publik" "$public_ip" "$RESET"
+        printf "    %s%-18s : %s%s\n" "$GREEN" "Folder web" "/var/www/html" "$RESET"
+        printf "    %s%-18s : %s%s\n" "$GREEN" "Konfigurasi Xray" "/etc/xray/config.json" "$RESET"
+        printf "    %s%-18s : %s%s\n" "$GREEN" "Cert & Key" "/etc/xray/xray.crt /etc/xray/xray.key" "$RESET"
+        printf "    %s%-18s :%s\n" "$GREEN" "Status layanan" "$RESET"
+    else
+        printf "    %-18s : %s\n" "Domain aktif" "$domain"
+        printf "    %-18s : %s\n" "IP publik" "$public_ip"
+        printf "    %-18s : %s\n" "Folder web" "/var/www/html"
+        printf "    %-18s : %s\n" "Konfigurasi Xray" "/etc/xray/config.json"
+        printf "    %-18s : %s\n" "Cert & Key" "/etc/xray/xray.crt /etc/xray/xray.key"
+        printf "    %-18s :\n" "Status layanan"
+    fi
     local services=(nginx xray haproxy dropbear openvpn ws)
-    printf "    %-18s :\n" "Status layanan"
     for svc in "${services[@]}"; do
         if systemctl is-active "$svc" >/dev/null 2>&1; then
-            printf "        - %-12s : %sRUNNING%s\n" "$svc" "${green}" "${NC}"
+            if (( USE_COLOR )); then
+                printf "        - %-12s : %sRUNNING%s\n" "$svc" "$GREEN" "$RESET"
+            else
+                printf "        - %-12s : RUNNING\n" "$svc"
+            fi
         else
-            printf "        - %-12s : %sINACTIVE%s\n" "$svc" "${RED}" "${NC}"
+            if (( USE_COLOR )); then
+                printf "        - %-12s : %sINACTIVE%s\n" "$svc" "$RED" "$RESET"
+            else
+                printf "        - %-12s : INACTIVE\n" "$svc"
+            fi
         fi
     done
 }
@@ -1099,7 +1109,15 @@ if [[ -n ${username:-} ]]; then
 else
     print_error "Hostname tidak diubah karena username tidak tersedia"
 fi
-echo -e "${green} Script Successfull Installed"
+if (( USE_COLOR )); then
+    printf "%sScript Successfully Installed%s\n" "$GREEN" "$RESET"
+else
+    echo "Script Successfully Installed"
+fi
 echo ""
-read -p "$(echo -e "Press ${YELLOW}[ ${NC}${YELLOW}Enter${NC} ${YELLOW}]${NC} For reboot") "
+if (( USE_COLOR )); then
+    read -p "$(printf "%sPress Enter to reboot%s " "$GREEN" "$RESET")"
+else
+    read -p "Press Enter to reboot "
+fi
 reboot
