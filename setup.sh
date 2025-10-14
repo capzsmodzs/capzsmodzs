@@ -19,29 +19,49 @@ start=$(date +%s)
 TOTAL_STEPS=24
 CURRENT_STEP=0
 
+USE_COLOR=1
 if [[ ! -t 1 || ${NO_COLOR:-0} == 1 ]]; then
+    USE_COLOR=0
+fi
+
+if (( USE_COLOR == 0 )); then
     Green=""; RED=""; YELLOW=""; BLUE=""; FONT=""; GREENBG=""; REDBG=""
     GRAY=""; NC=""; red=""; green=""; CYAN=""; MAGENTA=""; WHITE=""; grenbo=""
 fi
 COLOR1="${grenbo}"
 OK="${Green}  »${FONT}"
 ERROR="${RED}[ERROR]${FONT}"
+LABEL_OK="${green}[OK]${NC}"
+LABEL_ERR="${RED}[ERR]${NC}"
+LABEL_INFO="${CYAN}[INFO]${NC}"
+
+if (( USE_COLOR == 0 )); then
+    OK="  »"
+    ERROR="[ERROR]"
+    LABEL_OK="[OK]"
+    LABEL_ERR="[ERR]"
+    LABEL_INFO="[INFO]"
+fi
 
 print_install() {
     CURRENT_STEP=$((CURRENT_STEP + 1))
-    printf "%b[%02d/%02d]%b %s\n" "${YELLOW}" "${CURRENT_STEP}" "${TOTAL_STEPS}" "${NC}" "$1"
+    if (( USE_COLOR )); then
+        printf "%b[%02d/%02d]%b %s\n" "${YELLOW}" "${CURRENT_STEP}" "${TOTAL_STEPS}" "${NC}" "$1"
+    else
+        printf "[%02d/%02d] %s\n" "${CURRENT_STEP}" "${TOTAL_STEPS}" "$1"
+    fi
 }
 
 print_success() {
-    printf "    %b[OK]%b %s\n" "${green}" "${NC}" "$1"
+    printf "    %s %s\n" "${LABEL_OK}" "$1"
 }
 
 print_error() {
-    printf "    %b[ERR]%b %s\n" "${RED}" "${NC}" "$1"
+    printf "    %s %s\n" "${LABEL_ERR}" "$1"
 }
 
 print_ok() {
-    printf "    %b[INFO]%b %s\n" "${CYAN}" "${NC}" "$1"
+    printf "    %s %s\n" "${LABEL_INFO}" "$1"
 }
 
 secs_to_human() {
@@ -72,6 +92,12 @@ get_public_ip() {
     return 1
 }
 
+maybe_clear() {
+    if [[ -t 1 && ${NO_CLEAR:-0} -ne 1 ]]; then
+        command clear
+    fi
+}
+
 CF_ZONE="capzsmodzs.biz.id"
 CF_TOKEN="${CF_TOKEN:-m-0iXAdPSeUnfaIXUMl3j0HTlsizzz0trgRyPUH1}"
 CF_API_BASE="https://api.cloudflare.com/client/v4"
@@ -79,7 +105,7 @@ CF_API_BASE="https://api.cloudflare.com/client/v4"
 export DEBIAN_FRONTEND="${DEBIAN_FRONTEND:-noninteractive}"
 
 function show_intro_banner() {
-    clear
+    maybe_clear
     local current_ip=${IP:-}
     if [[ -z $current_ip ]]; then
         current_ip=$(get_public_ip || true)
@@ -1025,7 +1051,7 @@ function enable_services() {
 
 # Fingsi Install Script
 function instal() {
-    clear
+    maybe_clear
     show_intro_banner
     validate_system
     is_root
