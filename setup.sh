@@ -8,7 +8,9 @@ TOTAL_STEPS=24
 CURRENT_STEP=0
 
 USE_COLOR=1
-if [[ ! -t 1 || ${NO_COLOR:-0} == 1 ]]; then
+if [[ ${FORCE_COLOR:-0} == 1 ]]; then
+    USE_COLOR=1
+elif [[ ! -t 1 || ${NO_COLOR:-0} == 1 ]]; then
     USE_COLOR=0
 fi
 if (( USE_COLOR == 0 )); then
