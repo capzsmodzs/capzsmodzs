@@ -105,9 +105,9 @@ function show_intro_banner() {
     if (( USE_COLOR )); then
         printf "%bcapzsmodzs Premium Installer%b\n" "$GREEN" "$RESET"
         printf "%b------------------------------------------------------------%b\n" "$GREEN" "$RESET"
-        printf "%b  %-15s : capzsmodzs%b\n" "$GREEN" "$RESET" "Developer"
-        printf "%b  %-15s : Premium%b\n" "$GREEN" "$RESET" "Edition"
-        printf "%b  %-15s : capzsmodzs%b\n" "$GREEN" "$RESET" "Maintainer"
+        printf "%b  %-15s : %s%b\n" "$GREEN" "Developer" "capzsmodzs" "$RESET"
+        printf "%b  %-15s : %s%b\n" "$GREEN" "Edition" "Premium" "$RESET"
+        printf "%b  %-15s : %s%b\n" "$GREEN" "Maintainer" "capzsmodzs" "$RESET"
         printf "%b------------------------------------------------------------%b\n" "$GREEN" "$RESET"
         printf "%b  %-15s : %s%b\n" "$GREEN" "Architecture" "$(uname -m)" "$RESET"
         printf "%b  %-15s : %s%b\n" "$GREEN" "Operating System" "$os_name" "$RESET"
