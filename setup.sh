@@ -6,8 +6,6 @@ BLUE="\033[36m"
 FONT="\033[0m"
 GREENBG="\033[42;37m"
 REDBG="\033[41;37m"
-OK="${Green}  »${FONT}"
-ERROR="${RED}[ERROR]${FONT}"
 GRAY="\e[1;30m"
 NC='\e[0m'
 red='\e[1;31m'
@@ -16,12 +14,18 @@ CYAN='\033[96m'
 MAGENTA='\033[35m'
 WHITE='\033[97m'
 grenbo="\e[92;1m"
-
-COLOR1="${grenbo}"
 REPO="https://raw.githubusercontent.com/capzsmodzs/capzsmodzs/main/"
 start=$(date +%s)
 TOTAL_STEPS=24
 CURRENT_STEP=0
+
+if [[ ! -t 1 || ${NO_COLOR:-0} == 1 ]]; then
+    Green=""; RED=""; YELLOW=""; BLUE=""; FONT=""; GREENBG=""; REDBG=""
+    GRAY=""; NC=""; red=""; green=""; CYAN=""; MAGENTA=""; WHITE=""; grenbo=""
+fi
+COLOR1="${grenbo}"
+OK="${Green}  »${FONT}"
+ERROR="${RED}[ERROR]${FONT}"
 
 print_install() {
     CURRENT_STEP=$((CURRENT_STEP + 1))
@@ -85,21 +89,37 @@ function show_intro_banner() {
     fi
     local os_name
     os_name=$(awk -F= '/^PRETTY_NAME=/{gsub(/"/,"",$2);print $2}' /etc/os-release)
-    printf "%b\n" "${YELLOW}capzsmodzs Premium Installer${NC}"
-    printf "%b\n" "${GRAY}------------------------------------------------------------${NC}"
-    printf "  %-15s : %b%s%b\n" "Developer" "${green}" "capzsmodzs" "${NC}"
-    printf "  %-15s : %b%s%b\n" "Edition" "${WHITE}" "Premium" "${NC}"
-    printf "  %-15s : %b%s%b\n" "Maintainer" "${WHITE}" "capzsmodzs" "${NC}"
-    printf "%b\n" "${GRAY}------------------------------------------------------------${NC}"
-    printf "  %-15s : %b%s%b\n" "Architecture" "${green}" "$(uname -m)" "${NC}"
-    printf "  %-15s : %b%s%b\n" "Operating System" "${green}" "$os_name" "${NC}"
-    if [[ -n $current_ip ]]; then
-        printf "  %-15s : %b%s%b\n" "Public IP" "${green}" "$current_ip" "${NC}"
+    if [[ ${NO_COLOR:-0} == 1 ]]; then
+        echo "capzsmodzs Premium Installer"
+        echo "------------------------------------------------------------"
+        printf "  %-15s : %s\n" "Developer" "capzsmodzs"
+        printf "  %-15s : %s\n" "Edition" "Premium"
+        printf "  %-15s : %s\n" "Maintainer" "capzsmodzs"
+        echo "------------------------------------------------------------"
+        printf "  %-15s : %s\n" "Architecture" "$(uname -m)"
+        printf "  %-15s : %s\n" "Operating System" "$os_name"
+        printf "  %-15s : %s\n" "Public IP" "${current_ip:-Unknown}"
     else
-        printf "  %-15s : %b%s%b\n" "Public IP" "${RED}" "Unknown" "${NC}"
+        printf "%b\n" "${YELLOW}capzsmodzs Premium Installer${NC}"
+        printf "%b\n" "${GRAY}------------------------------------------------------------${NC}"
+        printf "  %-15s : %b%s%b\n" "Developer" "${green}" "capzsmodzs" "${NC}"
+        printf "  %-15s : %b%s%b\n" "Edition" "${WHITE}" "Premium" "${NC}"
+        printf "  %-15s : %b%s%b\n" "Maintainer" "${WHITE}" "capzsmodzs" "${NC}"
+        printf "%b\n" "${GRAY}------------------------------------------------------------${NC}"
+        printf "  %-15s : %b%s%b\n" "Architecture" "${green}" "$(uname -m)" "${NC}"
+        printf "  %-15s : %b%s%b\n" "Operating System" "${green}" "$os_name" "${NC}"
+        if [[ -n $current_ip ]]; then
+            printf "  %-15s : %b%s%b\n" "Public IP" "${green}" "$current_ip" "${NC}"
+        else
+            printf "  %-15s : %b%s%b\n" "Public IP" "${RED}" "Unknown" "${NC}"
+        fi
     fi
     echo
-    printf "Press %bEnter%b to start installation: " "${green}" "${NC}"
+    if [[ ${NO_COLOR:-0} == 1 || ! -t 1 ]]; then
+        printf "Press Enter to start installation: "
+    else
+        printf "Press %bEnter%b to start installation: " "${green}" "${NC}"
+    fi
     read -r
     echo
 }
